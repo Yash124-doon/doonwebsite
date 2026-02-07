@@ -1,0 +1,101 @@
+[
+  {
+    "id": "1",
+    "title": "Academic Calendar 2024-25",
+    "description": "Complete academic calendar with important dates and holidays",
+    "documentUrl": "/documents/academic-calendar-2024-25.pdf",
+    "fileType": "PDF",
+    "fileSize": "1.8 MB",
+    "category": "Academic"
+  },
+  {
+    "id": "2",
+    "title": "Fee Structure 2024-25",
+    "description": "Detailed fee structure for all classes and optional services",
+    "documentUrl": "/documents/fee-structure-2024-25.pdf",
+    "fileType": "PDF",
+    "fileSize": "950 KB",
+    "category": "Financial"
+  },
+  {
+    "id": "3",
+    "title": "Society Registration Certificate",
+    "description": "Registration certificate of Doon International School Society",
+    "documentUrl": "/documents/society-registration.pdf",
+    "fileType": "PDF",
+    "fileSize": "1.2 MB",
+    "category": "Legal Documents"
+  },
+  {
+    "id": "4",
+    "title": "NOC from State Government",
+    "description": "No Objection Certificate from Madhya Pradesh Government",
+    "documentUrl": "/documents/state-noc.pdf",
+    "fileType": "PDF",
+    "fileSize": "1.5 MB",
+    "category": "Legal Documents"
+  },
+  {
+    "id": "5",
+    "title": "Building Safety Certificate",
+    "description": "Fire safety and building clearance certificates",
+    "documentUrl": "/documents/building-safety-certificate.pdf",
+    "fileType": "PDF",
+    "fileSize": "2.3 MB",
+    "category": "Safety & Compliance"
+  },
+  {
+    "id": "6",
+    "title": "Details of Faculty & Staff",
+    "description": "Complete list of teaching and non-teaching staff with qualifications",
+    "documentUrl": "/documents/faculty-staff-details.pdf",
+    "fileType": "PDF",
+    "fileSize": "3.2 MB",
+    "category": "Human Resources"
+  },
+  {
+    "id": "7",
+    "title": "Annual Report 2023-24",
+    "description": "Comprehensive annual report including academic achievements and financial statements",
+    "documentUrl": "/documents/annual-report-2023-24.pdf",
+    "fileType": "PDF",
+    "fileSize": "5.7 MB",
+    "category": "Annual Reports"
+  },
+  {
+    "id": "8",
+    "title": "School Managing Committee Details",
+    "description": "Information about school management committee members and their roles",
+    "documentUrl": "/documents/managing-committee-details.pdf",
+    "fileType": "PDF",
+    "fileSize": "1.4 MB",
+    "category": "Governance"
+  },
+  {
+    "id": "9",
+    "title": "Transport Policy & Routes",
+    "description": "School transportation policy and detailed bus route information",
+    "documentUrl": "/documents/transport-policy-routes.pdf",
+    "fileType": "PDF",
+    "fileSize": "2.8 MB",
+    "category": "Policies"
+  },
+  {
+    "id": "10",
+    "title": "Activity Calendar AY 2025-26",
+    "description": "Complete activity calendar for academic year 2025-26 with co-curricular activities",
+    "documentUrl": "/assets/documents/AY 2025-26 DISJ ACTIVITY CALENDAR.xlsx - AY 2025-26.pdf",
+    "fileType": "PDF",
+    "fileSize": "-",
+    "category": "Academic"
+  },
+  {
+    "id": "11",
+    "title": "Self Certification",
+    "description": "Self certification documents as required by mandatory disclosure guidelines",
+    "documentUrl": "/assets/documents/SELF CERTIFICATION.pdf",
+    "fileType": "PDF",
+    "fileSize": "-",
+    "category": "Legal Documents"
+  }
+]

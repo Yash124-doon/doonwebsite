@@ -1,0 +1,31 @@
+{
+  "siteName": "DOON INTERNATIONAL SCHOOL, JABALPUR",
+  "tagline": "Excellence in Education",
+  "navigation": [
+    { "name": "HOME", "href": "/" },
+    {
+      "name": "ABOUT",
+      "href": "/about",
+      "dropdown": [
+        { "name": "About Us", "href": "/about" },
+        { "name": "School Facilities", "href": "/about#facilities" },
+        { "name": "Principal's Message", "href": "/principal-vision" }
+      ]
+    },
+    { "name": "MANDATORY DISCLOSURE", "href": "/mandatory-disclosure", "shortName": "MANDATORY DISCLOSURES" },
+    { "name": "ADMISSION", "href": "/admissions" },
+    { "name": "DISCOVER DOON", "href": "/infrastructure" },
+    { "name": "ENQUIRY", "href": "https://disjabalpur.schoolpad.in/enquiryManager/onlineOpenAdmissionForm/8", "external": true },
+    { "name": "PARENT PORTAL", "href": "https://disjabalpur.schoolpad.in/", "external": true }
+  ],
+  "contact": {
+    "phone": "+91 9201591900 / +91 9201591892",
+    "email": "info@dooninternationaljabalpur.com",
+    "address": "Doon International School, Jabalpur, Madhya Pradesh"
+  },
+  "socialMedia": [
+    { "name": "Facebook", "icon": "Facebook", "href": "#" },
+    { "name": "Twitter", "icon": "Twitter", "href": "#" },
+    { "name": "Instagram", "icon": "Instagram", "href": "#" }
+  ]
+}

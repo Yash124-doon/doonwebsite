@@ -1,0 +1,70 @@
+{
+  "hero": {
+    "heading": "Discover Doon, Jabalpur",
+    "subheading": "Holistic growth rooted in values, powered by modern learning.",
+    "videos": [
+      { "url": "YOUTUBE_URL_1" },
+      { "url": "YOUTUBE_URL_2" }
+    ],
+    "primaryCta": "Book a Campus Tour",
+    "secondaryCta": "Watch Student Stories"
+  },
+  "mainHeading": "Discover Doon: Culture, Pedagogy & Student Growth",
+  "pillars": [
+    {
+      "id": 1,
+      "title": "School Culture & Ethos",
+      "body": "At Doon International School, Jabalpur, we believe that education is not just about academics—it is about nurturing a safe, happy, and inclusive environment where every child feels valued. Our culture emphasizes respect, discipline, and empathy, ensuring that students grow into responsible citizens with strong moral values. Parents can be assured that their children are part of a community that celebrates diversity and fosters holistic development."
+    },
+    {
+      "id": 2,
+      "title": "Teaching Pedagogy",
+      "body": "Our teaching pedagogy blends traditional wisdom with modern methodologies. We emphasize experiential learning, project-based assignments, and inquiry-driven classrooms that encourage curiosity and creativity. Every lesson is designed to connect theory with practice, ensuring that students not only understand concepts but also apply them meaningfully in real life. This approach prepares them for both academic success and life beyond school."
+    },
+    {
+      "id": 3,
+      "title": "Boarding House Life",
+      "body": "For families opting for residential facilities, our Boarding House offers a nurturing environment that feels like a second home. With structured routines, mentorship programs, and personalized care, boarders enjoy a balance of academics, co-curricular activities, and leisure. Safety and well-being are our top priorities, and every child is guided to develop independence, responsibility, and camaraderie with peers."
+    },
+    {
+      "id": 4,
+      "title": "Experiential Learning Activities",
+      "body": "We believe that learning extends beyond textbooks. Students engage in pottery, STEM and robotics projects, Vedic Mathematics, spiritual classes, spoken English, and personality development workshops. These activities are facilitated by expert teachers and renowned associations, ensuring that every child receives exposure to diverse skills. Such experiences help students discover their passions and build confidence in multiple domains."
+    },
+    {
+      "id": 5,
+      "title": "Expert Teachers & Associations",
+      "body": "Our faculty comprises highly qualified educators who bring both expertise and compassion into the classroom. In addition, we collaborate with renowned educational associations to enrich our curriculum. This ensures that students benefit from structured learning pathways, innovative teaching practices, and exposure to global standards. Parents can trust that their children are guided by mentors who care deeply about their growth."
+    },
+    {
+      "id": 6,
+      "title": "Individual Analysis & Tracking",
+      "body": "Every child is unique, and we recognize that individuality through our continuous assessment system. With personalized growth monitoring, teachers track academic progress, social development, and emotional well-being. Parents receive regular updates, ensuring transparency and active involvement in their child’s journey. This system allows us to identify strengths and areas of improvement early, enabling timely interventions."
+    },
+    {
+      "id": 7,
+      "title": "Field Visits & Outdoor Learning",
+      "body": "Learning at Doon International is not confined to classrooms. Students participate in regular field visits, industry tours, and nature excursions that broaden their horizons. These experiences connect classroom knowledge with real-world applications, fostering curiosity and critical thinking. Outdoor learning also instills teamwork, leadership, and respect for the environment."
+    },
+    {
+      "id": 8,
+      "title": "Pre-Primary & Early Years Pedagogy",
+      "body": "Our youngest learners in Pre-Primary, Class 1, and Class 2 are introduced to education through play-based and activity-driven methods. We focus on curiosity, creativity, and foundational skills, ensuring that children develop a love for learning from the very beginning. Special attention is given to language development, motor skills, and social interaction, laying a strong base for future academic success."
+    },
+    {
+      "id": 9,
+      "title": "Student Development Programs",
+      "body": "Beyond academics, we offer structured programs in leadership training, debate clubs, public speaking, community service, and cultural exchange. These initiatives help students develop confidence, communication skills, and a sense of responsibility towards society. Parents can be assured that their children are being groomed into well-rounded individuals ready to face the challenges of tomorrow."
+    },
+    {
+      "id": 10,
+      "title": "Best Practices as Culture",
+      "body": "At Doon International, best practices are not just policies—they are part of our culture. We emphasize inclusivity, parental engagement, transparent communication, and holistic development. Every initiative is designed to ensure fairness, clarity, and continuous improvement. Together, we create a school environment where students thrive academically, socially, and emotionally."
+    }
+  ],
+  "finalCta": {
+    "heading": "Experience the Doon Difference",
+    "primaryCta": "Book a Campus Tour",
+    "secondaryCta": "Talk to Our Academic Team"
+  }
+}

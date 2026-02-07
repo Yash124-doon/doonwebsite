@@ -1,0 +1,91 @@
+{
+  "photos": [
+    {
+      "id": "1",
+      "src": "/assets/facilities/classroom.avif",
+      "alt": "Modern classroom with students"
+    },
+    {
+      "id": "2",
+      "src": "/assets/main-entrance.avif",
+      "alt": "Main entrance of Doon International School"
+    },
+    {
+      "id": "3",
+      "src": "/assets/facilities/computer-lab.avif",
+      "alt": "State-of-the-art computer lab"
+    },
+    {
+      "id": "4",
+      "src": "/assets/main-hall.avif",
+      "alt": "School main hall for assemblies"
+    },
+    {
+      "id": "5",
+      "src": "/assets/principal.avif",
+      "alt": "Principal of Doon International School"
+    },
+    {
+      "id": "6",
+      "src": "/assets/facilities/robotics.avif",
+      "alt": "Robotics class in action"
+    },
+    {
+      "id": "7",
+      "src": "/assets/facilities/horses.avif",
+      "alt": "Horse riding activity"
+    },
+    {
+      "id": "8",
+      "src": "/assets/facilities/transport.avif",
+      "alt": "School transport service"
+    },
+    {
+      "id": "9",
+      "src": "/assets/gallery/gallery1.avif",
+      "alt": "Students and teacher in classroom"
+    },
+    {
+      "id": "10",
+      "src": "/assets/gallery/gallery2.avif",
+      "alt": "Classroom learning experience"
+    },
+    {
+      "id": "11",
+      "src": "/assets/gallery/gallery3.avif",
+      "alt": "Interactive learning session"
+    },
+    {
+      "id": "12",
+      "src": "/assets/gallery/gallery4.avif",
+      "alt": "Students engaged in studies"
+    },
+    {
+      "id": "13",
+      "src": "/assets/gallery/gallery5.avif",
+      "alt": "Group study and collaboration"
+    },
+    {
+      "id": "14",
+      "src": "/assets/gallery/gallery6.avif",
+      "alt": "Academic excellence"
+    },
+    {
+      "id": "15",
+      "src": "/assets/facilities/arts.avif",
+      "alt": "Arts and creativity"
+    }
+  ],
+  "videos": [
+    {
+      "id": "1",
+      "src": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "alt": "School activities compilation"
+    },
+    {
+      "id": "2",
+      "src": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "alt": "Student achievements showcase"
+    }
+  ]
+}

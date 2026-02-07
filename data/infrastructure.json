@@ -1,0 +1,124 @@
+{
+  "facilities": [
+    {
+      "title": "Smart Board Classrooms",
+      "description": "All classrooms from Nursery to P5 have been converted into Smart Board Digi Classes. Teachers supplement the curriculum using a digital resource bank that is subject- and class-specific. Each classroom is equipped with air purifiers, ensuring a healthy learning atmosphere free from pollution and distractions.",
+      "image": "/assets/discover/classroom.avif"
+    },
+    {
+      "title": "Computer Laboratories",
+      "description": "RSJMS maintains two state-of-the-art computer laboratories, equipped with updated systems and multimedia facilities. Students from P1 to P5 learn computer science through structured lessons that combine theory with creative application. The curriculum emphasises problem-solving, responsible use of technology, and innovation.",
+      "image": "/assets/discover/computer-lab.avif"
+    },
+    {
+      "title": "School Library",
+      "description": "The school's Library Learning Programme introduces children to the world of literature through storytelling, author visits, book reviews, and creative writing. Activities include story narration with visual aids, listening to audio stories, creative post-listening sessions, and reading circles designed to cultivate a lifelong love for books and learning.",
+      "image": "/assets/discover/library.avif"
+    },
+    {
+      "title": "Science Park",
+      "description": "An interactive outdoor learning space, the Science Park features exhibits that simplify complex scientific principles. Displays include models of levers, solar eclipses, sundials, periscopes, rope-and-pulley systems, and Newton's colour disc. It encourages tactile learning through exploration and play.",
+      "image": "/assets/discover/science-park.avif"
+    },
+    {
+      "title": "Transportation Services",
+      "description": "Our comprehensive transportation network ensures safe and timely travel for students. With GPS-tracked vehicles, experienced drivers, and strict safety protocols, we provide door-to-door pickup and drop-off services across multiple routes in Jabalpur. Our transport team maintains a zero-accident record and offers comfortable, air-conditioned buses equipped with emergency medical kits and communication devices.",
+      "image": "/assets/discover/transport.avif"
+    },
+    {
+      "title": "Sports Facilities",
+      "description": "Our sports complex includes courts for basketball, tennis, and badminton, a swimming pool, and open grounds for football and athletics. Students participate in various sports activities that promote physical fitness, teamwork, and healthy competition under expert coaching.",
+      "image": "/assets/discover/sports-facilities.avif"
+    },
+    {
+      "title": "Music Room",
+      "description": "The music room offers instruments and acoustic spaces for students to explore rhythm, melody, and performance. Our music program includes individual and group lessons, choir practice, and musical performances that nurture creativity and artistic expression.",
+      "image": "/assets/discover/music-room.avif"
+    },
+    {
+      "title": "Art Studios",
+      "description": "Dedicated art studios encourage creativity through painting, sculpture, and mixed media projects. Students work with professional artists and art educators to develop their skills in visual arts, fostering imagination and self-expression.",
+      "image": "/assets/discover/art-studios.avif"
+    }
+  ],
+  "transport": {
+    "title": "Transportation Services",
+    "description": "Our comprehensive transportation network ensures safe and timely travel for students. With GPS-tracked vehicles, experienced drivers, and strict safety protocols, we provide door-to-door pickup and drop-off services across multiple routes in Jabalpur. Our transport team maintains a zero-accident record and offers comfortable, air-conditioned buses equipped with emergency medical kits and communication devices.",
+    "image": "/assets/discover/transport.avif"
+  },
+  "updates": [
+    {
+      "title": "Doon International School Awarded Excellence in Education",
+      "date": "2025-10-15",
+      "summary": "Our commitment to holistic education and innovative teaching methodologies has been recognized by the Ministry of Education.",
+      "href": "/updates/excellence-award-2025"
+    },
+    {
+      "title": "New Sports Complex Opens with Latest Facilities",
+      "date": "2025-10-02",
+      "summary": "The state-of-the-art sports complex now features modern equipment and facilities for basketball, swimming, and fitness activities.",
+      "href": "/facilities/sports-complex"
+    },
+    {
+      "title": "International Student Exchange Program Launched",
+      "date": "2025-09-28",
+      "summary": "Students can now participate in global exchange programs with partner institutions in 12 countries worldwide.",
+      "href": "/updates/student-exchange-program"
+    },
+    {
+      "title": "STEM Innovation Center Inauguration",
+      "date": "2025-09-15",
+      "summary": "The newly opened STEM center provides cutting-edge resources for robotics, 3D printing, and computer science education."
+    }
+  ],
+  "facilityNav": [
+    {
+      "label": "Smart Classrooms",
+      "icon": "📚",
+      "anchor": "smart-board-classrooms",
+      "color": "#EAF4FF"
+    },
+    {
+      "label": "Computer Labs",
+      "icon": "💻",
+      "anchor": "computer-laboratories",
+      "color": "#E8F5E8"
+    },
+    {
+      "label": "School Library",
+      "icon": "📖",
+      "anchor": "school-library",
+      "color": "#F3E8FF"
+    },
+    {
+      "label": "Science Park",
+      "icon": "🔬",
+      "anchor": "science-park",
+      "color": "#FFF3E0"
+    },
+    {
+      "label": "Transportation",
+      "icon": "🚌",
+      "anchor": "transportation-services",
+      "color": "#FFE8E8"
+    },
+    {
+      "label": "Sports Facilities",
+      "icon": "⚽",
+      "anchor": "sports-facilities",
+      "color": "#E3F2FD"
+    },
+    {
+      "label": "Music Room",
+      "icon": "🎵",
+      "anchor": "music-room",
+      "color": "#FCE4EC"
+    },
+    {
+      "label": "Art Studios",
+      "icon": "🎨",
+      "anchor": "art-studios",
+      "color": "#E0F2F1"
+    }
+  ]
+}

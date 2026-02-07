@@ -1,0 +1,61 @@
+{
+  "facilities": [
+    {
+      "title": "Equestrian Center & Horseback Riding",
+      "description": "Professional horseback riding facilities promoting physical coordination, confidence, and a unique connection with animals. Our equestrian program includes basic riding, stable management, and horse care education.",
+      "image": "/images/sports/horses.webp"
+    },
+    {
+      "title": "Sports Complex & Athletic Facilities",
+      "description": "Comprehensive sports complex featuring basketball courts, tennis facilities, badminton halls, swimming pool, and dedicated athletic tracks. Professional coaching available for various sports disciplines.",
+      "image": "/images/sports complex/sports_complex.avif"
+    },
+    {
+      "title": "Team Sports & Competitive Leagues",
+      "description": "Organized competitive leagues in football, soccer, basketball, and volleyball. Emphasis on teamwork, sportsmanship, and physical fitness through structured training and inter-school competitions.",
+      "image": "/images/team sports/team_sports.avif"
+    },
+    {
+      "title": "Individual Sports Excellence Program",
+      "description": "Specialized training in tennis, badminton, swimming, and track & field athletics. Individual coaching to develop personal sports excellence alongside academic commitments.",
+      "image": "/images/individual sports/individual_sports.avif"
+    },
+    {
+      "title": "Outdoor Adventure Activities",
+      "description": "Comprehensive outdoor education program including hiking, environmental education, and group adventure activities that build resilience, leadership, and environmental awareness.",
+      "image": "/images/outdoor adventurees/outdoor_adventures.avif"
+    }
+  ],
+  "facilityNav": [
+    {
+      "label": "Equestrian Center & Horseback Riding",
+      "icon": "🐎",
+      "anchor": "equestrian-center-horseback-riding",
+      "color": "#E3F2FD"
+    },
+    {
+      "label": "Sports Complex & Athletic Facilities",
+      "icon": "🏟️",
+      "anchor": "sports-complex-athletic-facilities",
+      "color": "#FCE4EC"
+    },
+    {
+      "label": "Team Sports & Competitive Leagues",
+      "icon": "⚽",
+      "anchor": "team-sports-competitive-leagues",
+      "color": "#E0F2F1"
+    },
+    {
+      "label": "Individual Sports Excellence Program",
+      "icon": "🏅",
+      "anchor": "individual-sports-excellence-program",
+      "color": "#EAF4FF"
+    },
+    {
+      "label": "Outdoor Adventure Activities",
+      "icon": "🏞️",
+      "anchor": "outdoor-adventure-activities",
+      "color": "#FFF0E5"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "annual-sports-day-2024",
+    "slug": "annual-sports-day-2024",
+    "title": "Doon International School's Annual Sports Day Celebrates Athletic Excellence",
+    "date": "2024-12-15",
+    "author": "Sports Department",
+    "category": "Sports",
+    "featured": true,
+    "excerpt": "Over 800 students participated in our biggest sporting event, showcasing remarkable athletic talent and sportsmanship across various competitions.",
+    "content": "Our Annual Sports Day on December 15th was a spectacular celebration of athletic excellence, bringing together students, parents, and faculty for an unforgettable day of competition and camaraderie.\n\nThe event featured a wide range of competitions including track and field events, team sports, and inter-house competitions. Students from grades 1-12 participated enthusiastically, with remarkable performances in 100m sprint, long jump, shot put, relay races, football, basketball, and volleyball.\n\nThe Blue House emerged as the overall winner with 145 points, followed closely by the Red House with 142 points. Special recognition goes to Arjun Sharma of Class 10 for setting a new school record in the 200m sprint, and Priya Patel of Class 8 for her outstanding performance in the long jump.\n\nChief Guest Mr. Rajesh Kumar, Former National Level Athlete, praised the students' dedication and the school's excellent sports infrastructure. The event concluded with a vibrant closing ceremony celebrating the spirit of sportsmanship and healthy competition.",
+    "image": "/images/news/sports-day-2024.jpg"
+  },
+  {
+    "id": "science-exhibition-2024",
+    "slug": "science-exhibition-2024",
+    "title": "Innovation Takes Center Stage at Science Exhibition 2024",
+    "date": "2024-11-28",
+    "author": "Science Department",
+    "category": "Academic",
+    "featured": true,
+    "excerpt": "Students presented groundbreaking projects in renewable energy, robotics, and biotechnology, impressing judges and visitors alike.",
+    "content": "The annual Science Exhibition held on November 28th showcased the innovative spirit and scientific acumen of our students across grades 6-12. Over 150 projects were presented, covering diverse fields including renewable energy, advanced technology, biotechnology, and environmental science.\n\nHighlights included a working model of a wind-solar hybrid power system by Class 11 students, a water purification system using natural materials by Class 9 students, and a robotics-powered waste segregation robot by our Class 12 computer science team.\n\nDr. Meera Sharma, Chief Scientist at CSIR-NEERI Nagpur, served as the chief guest and was impressed by the quality of research and presentation. She encouraged students to pursue careers in STEM fields and praised the school's focus on practical, hands-on learning.\n\nWinners included: 1st Prize - 'Smart Agriculture using IoT' by Rohit Gupta and team (Class 12), 2nd Prize - 'Biodegradable Plastic from Orange Peels' by Sneha Jain (Class 10), and 3rd Prize - 'Voice-Controlled Home Automation' by Amit Singh and team (Class 11).",
+    "image": "/images/news/science-exhibition-2024.jpg"
+  },
+  {
+    "id": "new-academic-year-2025",
+    "slug": "new-academic-year-2025",
+    "title": "Academic Year 2025-26 Admissions Now Open",
+    "date": "2024-12-01",
+    "author": "Admissions Office",
+    "category": "Admissions",
+    "featured": false,
+    "excerpt": "Applications are now being accepted for the 2025-26 academic year across all grades from Nursery to Class XII.",
+    "content": "Doon International School is pleased to announce that admissions for the academic year 2025-26 are now open for all grades from Nursery to Class XII.\n\nWe offer a comprehensive curriculum combining academic excellence with holistic development. Our state-of-the-art facilities include modern classrooms, well-equipped laboratories, extensive library, sports complex, and dedicated spaces for arts and music.\n\nKey admission dates:\n- Application forms available: December 1, 2024\n- Last date for submission: February 15, 2025\n- Admission tests: February 20-25, 2025\n- Results announcement: March 1, 2025\n- New session begins: April 1, 2025\n\nProspective parents are invited to visit our campus during Open House events scheduled every Saturday in January and February. For more information, please contact our Admissions Office at admissions@doonschooljabalpur.edu.in or call +91 9201591900 / +91 9201591892.",
+    "image": "/images/news/admissions-2025.jpg"
+  },
+  {
+    "id": "inter-school-debate-victory",
+    "slug": "inter-school-debate-victory",
+    "title": "Doon International School Wins Inter-School Debate Championship",
+    "date": "2024-10-22",
+    "author": "English Department",
+    "category": "Academic",
+    "featured": false,
+    "excerpt": "Our debate team emerged victorious in the prestigious Central India Inter-School Debate Championship held in Nagpur.",
+    "content": "Our talented debate team brought glory to Doon International School by winning the Central India Inter-School Debate Championship held at Nagpur on October 22nd, 2024.\n\nThe team, comprising Ananya Verma (Class 12), Karan Patel (Class 11), and Simran Kaur (Class 10), competed against 32 schools from across Central India. The championship featured multiple rounds including prepared debates, impromptu speaking, and cross-examination rounds.\n\nThe final debate on the topic 'Technology has made human relationships more superficial' saw our team arguing for the motion with exceptional research, logical reasoning, and eloquent presentation. Ananya Verma was declared the Best Speaker of the tournament.\n\nMrs. Sunita Sharma, Head of English Department and debate coach, praised the team's dedication and months of rigorous preparation. Principal Dr. Rajesh Gupta congratulated the winners and emphasized the importance of such platforms in developing critical thinking and communication skills.",
+    "image": "/images/news/debate-championship.jpg"
+  }
+]

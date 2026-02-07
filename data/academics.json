@@ -1,0 +1,117 @@
+{
+  "facilities": [
+    {
+      "title": "Empowering Minds, Enriching Souls: The Doon Way to Holistic Excellence",
+      "description": "At Doon International School, education is not memorization-it is transformation. Our curriculum blends intellectual rigor, cultural depth, and experiential learning to nurture every child's potential. With innovation, values, and creativity at its core, we prepare learners to excel in academics and life.",
+      "image": "/images/academics/comprehensive-curriculum.avif"
+    },
+    {
+      "title": "🌱 ELCP - Experiential Learning Curriculum Plan",
+      "description": "Our Experiential Learning Curriculum Plan (ELCP) ensures that every chapter is paired with a real-world activity to make knowledge tangible.<ul><li>Children spinning during games experience <strong>centripetal force</strong> before studying it in Physics.</li><li>Measuring the school garden during plantation drives becomes a live lesson in <strong>area and perimeter</strong>.</li><li>A mock market setup teaches <strong>profit, loss, budgeting, and communication</strong>.</li></ul>Through <strong>subject integration, field visits, projects, and thematic activities</strong>, students gain a real feel of application, making learning joyful, relevant, and lasting.",
+      "image": "/images/academics/stem-program.avif"
+    },
+    {
+      "title": "📊 Weekly Assessments & Individual Remediation",
+      "description": "Learning is continuously monitored through <strong>weekly assessments</strong>. Based on classroom interaction and performance, <strong>additional remediation classes</strong> are scheduled to strengthen weak areas. Every lesson is designed with <strong>pre-set academic standards</strong>, ensuring that children across all levels are engaged, challenged, and supported.",
+      "image": "/images/academics/language-arts.avif"
+    },
+    {
+      "title": "🧠 Vedic Mathematics",
+      "description": "Our <strong>Vedic Maths program</strong>, guided by the Principal Sir, enhances mental agility, speed, and accuracy. Students develop a love for numbers and master techniques for quick calculation-an invaluable skill for academics and competitive exams.",
+      "image": "/images/academics/performing-arts.avif"
+    },
+    {
+      "title": "🕉️ Spiritual Classes",
+      "description": "Rooted in Indian values, our <strong>spiritual sessions</strong> nurture mindfulness, gratitude, and ethical grounding. Through stories, chants, and reflection, students learn to balance ambition with humility and inner peace.",
+      "image": "/images/academics/sports-education.avif"
+    },
+    {
+      "title": "🗣️ Spoken English & Personality Development",
+      "description": "Confidence in communication is cultivated through <strong>debates, role plays, and public speaking</strong>. Students gain fluency in English and develop essential life skills-leadership, etiquette, and emotional intelligence-that prepare them for global platforms.",
+      "image": "/images/academics/global-exchange.avif"
+    },
+    {
+      "title": "🌍 Foreign Language Exposure",
+      "description": "We offer <strong>foreign language programs</strong> such as French and German to broaden horizons. Students gain linguistic skills and cultural awareness, equipping them for international opportunities.",
+      "image": "/images/academics/foreign-languages.avif"
+    },
+    {
+      "title": "🎨 Fine Arts Integration",
+      "description": "At Doon, <strong>fine arts</strong> are integral to academics.<ul><li>Through <strong>dance</strong>, learners explore the <strong>science of body posture</strong> and understand <strong>mathematical sequencing</strong> in steps.</li><li>In <strong>visual art</strong>, they identify and apply <strong>shapes, symmetry, and geometry</strong>.</li><li>Through <strong>music</strong>, they develop coordination and grasp the <strong>scientific principles of sound</strong>.</li></ul>Fine arts become a medium of personality development, confidence-building, and interdisciplinary learning.",
+      "image": "/images/academics/fine-arts.avif"
+    },
+    {
+      "title": "🔬 Experiential Learning & Innovation Platforms",
+      "description": "Our curriculum emphasizes <strong>learning by doing</strong> through <strong>projects, fieldwork, exhibitions, and real-life applications</strong>. Robotics, science labs, social studies surveys, and thematic showcases make knowledge meaningful and collaborative.<br><br>We proudly host <strong>IGNITE@DIS</strong>, our flagship <strong>Science and Innovation Club</strong>, where students explore STEM, technology, and design thinking through hands-on challenges, coding, model-making, and research. These platforms foster curiosity, creativity, and a spirit of invention.",
+      "image": "/images/academics/experiential-learning.avif"
+    },
+    {
+      "title": "Final Tagline",
+      "description": "From Vedic Maths to robotics, spoken English to spiritual wisdom -<br>Doon International School nurtures every learner with precision, passion, and purpose.<br>Here, every talent finds its path, every dream finds its wings.",
+      "image": "/images/academics/global-exchange.avif",
+      "isHeroSection": true
+    }
+  ],
+  "facilityNav": [
+    {
+      "label": "Empowering Minds, Enriching Souls: The Doon Way to Holistic Excellence",
+      "icon": "🎓",
+      "anchor": "empowering-minds-enriching-souls-the-doon-way-to-holistic-excellence",
+      "color": "#EAF4FF"
+    },
+    {
+      "label": "🌱 ELCP - Experiential Learning Curriculum Plan",
+      "icon": "🌱",
+      "anchor": "elcp-experiential-learning-curriculum-plan",
+      "color": "#FFF0E5"
+    },
+    {
+      "label": "📊 Weekly Assessments & Individual Remediation",
+      "icon": "📊",
+      "anchor": "weekly-assessments-individual-remediation",
+      "color": "#E8F5E8"
+    },
+    {
+      "label": "🧠 Vedic Mathematics",
+      "icon": "🧠",
+      "anchor": "vedic-mathematics",
+      "color": "#F3E8FF"
+    },
+    {
+      "label": "🕉️ Spiritual Classes",
+      "icon": "🕉️",
+      "anchor": "spiritual-classes",
+      "color": "#FFF3E0"
+    },
+    {
+      "label": "🗣️ Spoken English & Personality Development",
+      "icon": "🗣️",
+      "anchor": "spoken-english-personality-development",
+      "color": "#FFE8E8"
+    },
+    {
+      "label": "🌍 Foreign Language Exposure",
+      "icon": "🌍",
+      "anchor": "foreign-language-exposure",
+      "color": "#E0F2FF"
+    },
+    {
+      "label": "🎨 Fine Arts Integration",
+      "icon": "🎨",
+      "anchor": "fine-arts-integration",
+      "color": "#FFF3E5"
+    },
+    {
+      "label": "🔬 Experiential Learning & Innovation Platforms",
+      "icon": "🔬",
+      "anchor": "experiential-learning-innovation-platforms",
+      "color": "#E8FFE8"
+    },
+    {
+      "label": "Final Tagline",
+      "icon": "💬",
+      "anchor": "from-vedic-maths-to-robotics-spoken-english-to-spiritual-wisdom---doon-international-school-nurtures-every-learner-with-precision-passion-and-purpose-here-every-talent-finds-its-path-every-dream-finds-its-wings",
+      "color": "#F8E8FF"
+    }
+  ]
+}

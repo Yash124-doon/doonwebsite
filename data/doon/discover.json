@@ -1,0 +1,29 @@
+{
+  "sectionTitle": "DISCOVER DOON",
+  "cards": [
+    {
+      "id": "academics",
+      "title": "Academics",
+      "subtitle": "World-class curriculum with CBSE framework, STEM programs, and holistic learning approaches.",
+      "image": "/images/academics/stem-program.avif",
+      "icon": "book",
+      "link": "/academics"
+    },
+    {
+      "id": "sports",
+      "title": "Sports",
+      "subtitle": "Comprehensive sports facilities promoting physical excellence and teamwork among students.",
+      "image": "/images/sports/horses.webp",
+      "icon": "sports",
+      "link": "/sports"
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "subtitle": "Modern classrooms, advanced labs, and innovative learning spaces designed for excellence.",
+      "image": "/assets/main-entrance.webp",
+      "icon": "building",
+      "link": "/infrastructure"
+    }
+  ]
+}

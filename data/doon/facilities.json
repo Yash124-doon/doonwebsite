@@ -1,0 +1,48 @@
+{
+  "title": "Facilities",
+  "slug": "facilities",
+  "sections": [
+    {
+      "heading": "Academic Departments",
+      "content": "Doon International School houses well-equipped laboratories, digital classrooms, and a comprehensive library to support modern learning."
+    },
+    {
+      "heading": "Infrastructure",
+      "type": "departments",
+      "departments": [
+        {
+          "name": "Robotics Department",
+          "image": "/assets/facilities/robotics.avif",
+          "description": "Advanced robotics education with hands-on learning experiences"
+        },
+        {
+          "name": "Horse Riding",
+          "image": "/assets/facilities/horses.avif",
+          "description": "Equestrian activities for physical development and confidence building"
+        },
+        {
+          "name": "Computer Labs",
+          "image": "/assets/facilities/computer-lab.avif",
+          "description": "Modern computing facilities with latest technology and software"
+        },
+        {
+          "name": "Classroom",
+          "image": "/assets/facilities/classroom.avif",
+          "description": "Interactive digital classrooms designed for optimal learning"
+        },
+        {
+          "name": "Arts",
+          "image": "/assets/facilities/arts.avif",
+          "description": "Creative arts studios fostering artistic expression and talent"
+        },
+        {
+          "name": "Transport",
+          "image": "/assets/facilities/transport.avif",
+          "description": "Safe and efficient transportation services for all students"
+        }
+      ]
+    }
+  ],
+  "source": "Doon International School Mohali Official Media",
+  "lastUpdated": "2025-10-07"
+}

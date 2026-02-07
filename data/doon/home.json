@@ -1,0 +1,91 @@
+{
+  "hero": {
+    "title": "Doon International School",
+    "subtitle": "Excellence in Education",
+    "ctaPrimary": { "label": "Enroll Now", "href": "/admissions" },
+    "ctaSecondary": { "label": "Learn More", "href": "/about" }
+  },
+  "features": [
+    { "title": "World-Class Infrastructure", "desc": "Modern classrooms, advanced labs, rich library, and smart learning tools.", "icon": "GraduationCap" },
+    { "title": "Residential & Day Boarding Facilities", "desc": "Safe hostels, nutritious meals, comfortable stay, and secure environment.", "icon": "User" },
+    { "title": "Sports & Extracurricular Activities", "desc": "Excellent sports, music, arts, drama, and holistic student development programs.", "icon": "Star" }
+  ],
+  "newsTicker": [
+    "Admission Open 2025–26",
+    "Doon International School – World Class Facility",
+    "Welcome to Doon International School",
+    "Join us for Academic Excellence and Holistic Growth"
+  ],
+  "welcome": {
+    "heading": "Welcome to Doon International School, Jabalpur",
+    "subheading": "Under the Aegis of Doon International School, Dehradun",
+    "paragraphs": [
+      "Doon International School, Jabalpur is under the aegis of Doon International School, established in 1993, a leading day and residential, senior secondary school located in the Doon Valley catering to the needs of students from all parts of the world.",
+      "The curriculum for our school students integrates traditional Indian values with modern educational approaches, creating a comprehensive program designed for holistic academic and personal growth.",
+      "The school aims at equipping the students with integrity, courage and compassion to face the challenges of the modern world."
+    ]
+  },
+  "stats": [
+    { "title": "15 Acres", "subtitle": "Green Campus", "icon": "Building" },
+    { "title": "3,000+", "subtitle": "No. of Students", "icon": "Users" },
+    { "title": "80+", "subtitle": "Classrooms", "icon": "GraduationCap" },
+    { "title": "20+", "subtitle": "Labs", "icon": "Grid" }
+  ],
+  "director": {
+    "title": "Director's Message",
+    "sub": "Doon International School, Jabalpur",
+    "message": "Dear Parents, Thank you for showing interest in admitting your child to Doon International School, Jabalpur. We believe our school offers an educational experience that equips every child with confidence, curiosity, and compassion to thrive in the modern world. We look forward to welcoming your child to Doon International School!",
+    "image": "/images/director.jpg"
+  },
+  "latestUpdates": [
+    { "title":"Admission Open 2025-26", "date":"April 4, 2025", "desc":"Secure environment ensuring safety with 24/7 security, CCTV, and strict protocols.", "image": "/images/update1.avif" },
+    { "title":"Doon International School - World Class Facility", "date":"April 4, 2025", "desc":"Doon International School offers quality education, expert faculty, modern infrastructure.", "image": "/images/update2.avif" },
+    { "title":"Welcome to Doon International School", "date":"April 4, 2025", "desc":"Doon International School, Jabalpur is under the aegis of Doon International School.", "image": "/images/update3.avif" }
+  ],
+  "upcomingEvents": [
+    { "title":"TED Talks at UCF College", "date":"Jan 06, 2025", "time":"08:00 - 11:00 (January 20, 2027)", "desc":"Bimply dummy text of the printing and typesetting industry." },
+    { "title":"National Capital Leadership 2026", "date":"Oct 21, 2026", "time":"15:30 - 20:30", "desc":"Bimply dummy text of the printing and typesetting industry." }
+  ],
+  "gallery": [ "/assets/gallery/1.avif", "/assets/gallery/2.avif", "/assets/gallery/3.avif" ],
+  "campusExperience": {
+    "backgroundImage": "/assets/discoverdoon.jpg",
+    "heading": "Doon Campus Experience",
+    "subheading": "Discover the vibrant life at Doon International School through our world-class facilities, diverse extracurricular activities, and a nurturing environment that fosters growth and excellence",
+    "cta": {
+      "text": "Explore Campus",
+      "href": "/facilities"
+    }
+  },
+  "academics": [
+    {
+      "title": "Comprehensive Curriculum Excellence",
+      "summary": "Following a comprehensive integrated curriculum with global perspectives, ensuring students excel in academic achievement and personal development through innovative learning methods.",
+      "image": "/images/academics/comprehensive-curriculum.avif"
+    },
+    {
+      "title": "STEM Education Program",
+      "summary": "Comprehensive Science, Technology, Engineering, and Mathematics program with hands-on learning in robotics, coding, and scientific exploration.",
+      "image": "/images/academics/stem-program.avif"
+    },
+    {
+      "title": "Language Arts & Literature",
+      "summary": "Rich program combining classical literature with contemporary writing, emphasizing communication skills, critical thinking, and literary appreciation.",
+      "image": "/images/academics/language-arts.avif"
+    },
+    {
+      "title": "Performing Arts Integration",
+      "summary": "Integration of music, drama, and dance into the curriculum, fostering creativity, confidence, and emotional expression through artistic endeavors.",
+      "image": "/images/academics/performing-arts.avif"
+    },
+    {
+      "title": "Sports & Physical Education",
+      "summary": "Comprehensive physical education program emphasizing health, fitness, teamwork, and character development through various sports and activities.",
+      "image": "/images/academics/sports-education.avif"
+    },
+    {
+      "title": "Global Exchange & Cultural Studies",
+      "summary": "International programs promoting cultural awareness, exchange partnerships, and global citizenship through multicultural education initiatives.",
+      "image": "/images/academics/global-exchange.avif"
+    }
+  ]
+}
