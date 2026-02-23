@@ -46,7 +46,7 @@ export default function RegisterNowSection() {
             }}
             aria-label="Scan QR code to register"
           >
-            <div className="p-4 bg-white rounded-lg shadow-lg border-2 border-[#FFD200] hover:border-[#001F48] transition-colors duration-300">
+            {/* <div className="p-4 bg-white rounded-lg shadow-lg border-2 border-[#FFD200] hover:border-[#001F48] transition-colors duration-300">
               <img
                 src="/images/qrcode.png"
                 alt="Registration QR Code"
@@ -55,7 +55,7 @@ export default function RegisterNowSection() {
               <p className="text-center text-sm text-gray-600 mt-2 font-medium">
                 Tap to enlarge
               </p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
