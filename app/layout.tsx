@@ -50,19 +50,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17786194195"
-          strategy="afterInteractive"
-        />
-        <Script id="google-gtag-aw" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17786194195');
-          `}
-        </Script> */}
         {/* New Google Analytics Tag */}
         <Script
           async
