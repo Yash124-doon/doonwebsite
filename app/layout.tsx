@@ -50,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17786194195"
           strategy="afterInteractive"
@@ -62,7 +62,7 @@ export default function RootLayout({
             gtag('js', new Date());
             gtag('config', 'AW-17786194195');
           `}
-        </Script>
+        </Script> */}
         {/* New Google Analytics Tag */}
         <Script
           async
