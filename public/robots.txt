@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private folders if any
+Disallow: /admin/
+Disallow: /backend/
+Disallow: /cgi-bin/
+
+Sitemap: https://www.dooninternationaljabalpur.com/sitemap.xml
