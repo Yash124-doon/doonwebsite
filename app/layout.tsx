@@ -52,16 +52,29 @@ export default function RootLayout({
       <head>
         <Script
           async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17786194195"
+          strategy="afterInteractive"
+        />
+        <Script id="google-gtag-aw" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17786194195');
+          `}
+        </Script>
+        {/* New Google Analytics Tag */}
+        <Script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-FY0R85Q5RJ"
           strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-gtag-ga" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-FY0R85Q5RJ');
-            gtag('config', 'AW-17786194195');
           `}
         </Script>
       </head>
