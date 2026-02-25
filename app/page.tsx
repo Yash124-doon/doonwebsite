@@ -39,21 +39,21 @@ import { useState, useEffect } from 'react';
  */
 
 export default function Home(): JSX.Element {
-  const [showPopup, setShowPopup] = useState(false);
+  // const [showPopup, setShowPopup] = useState(false);
 
-  useEffect(() => {
-    // Show popup on every homepage load with slight delay to prevent flash
-    const timer = setTimeout(() => setShowPopup(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
+  // useEffect(() => {
+  //   // Show popup on every homepage load with slight delay to prevent flash
+  //   const timer = setTimeout(() => setShowPopup(true), 200);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
-  };
+  // const handleClosePopup = () => {
+  //   setShowPopup(false);
+  // };
 
   return (
     <>
-      <PopupModal isOpen={showPopup} onClose={handleClosePopup} />
+      {/* <PopupModal isOpen={showPopup} onClose={handleClosePopup} /> */}
 
       {/* Hero Section - Updated to use image instead of video */}
       <Hero
