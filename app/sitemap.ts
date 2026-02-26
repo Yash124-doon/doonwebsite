@@ -1,56 +1,76 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.dooninternationaljabalpur.com'
+  const baseUrl = 'https://dooninternationaljabalpur.com';
 
-  return [
+  const routes = [
     {
-      url: `${baseUrl}/`,
+      url: `${baseUrl}`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/admissions`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/enquiry`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
     },
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/principal-vision`,
+      url: `${baseUrl}/admissions`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/academics`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
     {
       url: `${baseUrl}/infrastructure`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'monthly' as const,
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/sports`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/discover-doon`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/principal-vision`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     },
     {
       url: `${baseUrl}/mandatory-disclosure`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.7,
+      changeFrequency: 'yearly' as const,
+      priority: 0.6,
     },
     {
       url: `${baseUrl}/updates`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
-  ]
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+  ];
+
+  return routes;
 }

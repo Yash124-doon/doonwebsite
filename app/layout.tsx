@@ -11,6 +11,7 @@ import './globals.css';
 import Header from '../components/layout/header';
 import UnifiedFooter from '../components/layout/UnifiedFooter';
 import RegistrationSideStrip from '../components/ui/registration-side-strip';
+import WhatsAppFloatButton from '../components/ui/whatsapp-float-button';
 import siteData from '../data/site.json';
 
 // Configure Inter font with multiple weights for consistent typography
@@ -92,6 +93,7 @@ export default function RootLayout({
           {children}
         </main>
         <UnifiedFooter />
+        <WhatsAppFloatButton />
       </body>
     </html>
   );
