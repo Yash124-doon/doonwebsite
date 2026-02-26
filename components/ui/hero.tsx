@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, imageUrl, imageAlt, videoS
             playsInline
             poster={videoPoster}
           >
-            <source src={videoSrc} type="video/webm" />
+            <source src={videoSrc} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Semi-transparent overlay for text contrast */}

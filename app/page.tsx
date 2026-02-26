@@ -60,7 +60,7 @@ export default function Home(): JSX.Element {
       <Hero
         title="Doon International School"
         subtitle={siteData.tagline}
-        videoSrc="/assets/gallery/videos/DOON CHANGES.mp4"
+        videoSrc="https://crm-generalize.dentalguru.software/Assets/DOON%20CHANGES.mp4"
       >
         <Link href="/about">
           <Button size="lg" className="btn-mobile bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl w-full sm:w-auto">
