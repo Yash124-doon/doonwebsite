@@ -26,6 +26,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: siteData.siteName,
   description: siteData.tagline,
+  icons: {
+    icon: 'favicon/favicon.ico',
+    shortcut: 'favicon/favicon.ico',
+    apple: 'favicon/favicon.ico',
+  },
 };
 
 /**
