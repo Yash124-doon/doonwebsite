@@ -46,12 +46,12 @@ export default function MandatoryDisclosurePage() {
               <tr>
                 <td className="px-2 md:px-4 py-2 border border-gray-300 whitespace-nowrap text-center">02</td>
                 <td className="px-2 md:px-4 py-2 border border-gray-300">AFFILIATION NUMBER</td>
-                <td className="px-2 md:px-4 py-2 border border-gray-300 bg-[#FFF3E0]">-</td>
+                <td className="px-2 md:px-4 py-2 border border-gray-300 bg-[#FFF3E0]">1031485</td>
               </tr>
               <tr>
                 <td className="px-2 md:px-4 py-2 border border-gray-300 whitespace-nowrap text-center">03</td>
                 <td className="px-2 md:px-4 py-2 border border-gray-300">SCHOOL CODE</td>
-                <td className="px-2 md:px-4 py-2 border border-gray-300 bg-[#FFF3E0]">-</td>
+                <td className="px-2 md:px-4 py-2 border border-gray-300 bg-[#FFF3E0]">51503</td>
               </tr>
               <tr>
                 <td className="px-2 md:px-4 py-2 border border-gray-300 whitespace-nowrap text-center">04</td>
@@ -73,7 +73,7 @@ export default function MandatoryDisclosurePage() {
                 <td className="px-2 md:px-4 py-2 border border-gray-300">QUALIFICATION</td>
                 <td className="px-2 md:px-4 py-2 border border-gray-300 bg-[#FFF3E0]">
                   PHD(Maths), MSc, BEd.
-MDP(IIM), HGSE
+                  MDP(IIM), HGSE
                 </td>
               </tr>
               <tr>

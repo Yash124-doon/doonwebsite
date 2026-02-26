@@ -1,6 +1,6 @@
 export default function NewsTicker() {
   const newsItems = [
-    "Doon International School – Admission Open 2025-26",
+    "Doon International School – Admission Open 2026-27",
     "•",
     "Doon International School – World Class Facility",
     "•",
@@ -64,7 +64,7 @@ export default function NewsTicker() {
               {item}
             </span>
           ))}
-      {/* Duplicate content for seamless loop */}
+          {/* Duplicate content for seamless loop */}
           {newsItems.map((item, index) => (
             <span
               key={`duplicate-${index}`}
