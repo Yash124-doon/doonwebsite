@@ -43,3 +43,11 @@ dist/
 .env.local
 .env.local.example
 SECURITY_AND_DEPLOYMENT.md
+
+# Large media files - too big for GitHub (>100MB limit)
+# Videos must be hosted on external CDN (YouTube, Cloudinary, etc.)
+*.mp4
+*.webm
+*.mov
+*.avi
+*.mkv

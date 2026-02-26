@@ -55,12 +55,12 @@ export default function Home(): JSX.Element {
     <>
       {/* <PopupModal isOpen={showPopup} onClose={handleClosePopup} /> */}
 
-      {/* Hero Section - Updated to use image instead of video */}
+      {/* Hero Section - Video Background */}
+      {/* To switch back to image: replace videoSrc with imageUrl="/assets/heroimagenew.jpeg" imageAlt="Doon International School campus" */}
       <Hero
         title="Doon International School"
         subtitle={siteData.tagline}
-        imageUrl="/assets/heroimagenew.jpeg"
-        imageAlt="Doon International School campus"
+        videoSrc="/assets/gallery/videos/DOON CHANGES.mp4"
       >
         <Link href="/about">
           <Button size="lg" className="btn-mobile bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl w-full sm:w-auto">

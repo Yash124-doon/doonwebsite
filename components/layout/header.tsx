@@ -166,13 +166,14 @@ const Header: React.FC = (): JSX.Element => {
             ? `bg-transparent shadow-none`
             : `shadow-lg border-b bg-white border-gray-300`
           }`}>
-          <div className="container px-0.5 pr-2 py-1 md:px-4 md:py-1.5 lg:py-2 min-h-[3.5rem] md:min-h-[3.5rem] lg:min-h-[4rem] grid grid-cols-[auto_1fr_auto] items-center relative gap-4 lg:gap-8">
+          <div className="container px-0.5 pr-2 py-0 md:px-4 md:py-0 lg:py-0 min-h-[5rem] md:min-h-[5rem] lg:min-h-[5.5rem] grid grid-cols-[auto_1fr_auto] items-center relative gap-4 lg:gap-8">
             {/* LEFT SIDE: LOGO */}
             <div className="flex items-center flex-shrink-0">
               <img
                 src="/assets/doonlogo.png"
                 alt="Doon International School Logo"
-                className="w-20 h-20 md:w-20 md:h-20 lg:w-20 lg:h-20 object-contain"
+                className="w-[72px] h-[72px] md:w-[72px] md:h-[72px] lg:w-[72px] lg:h-[72px] object-contain"
+                style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}
               />
             </div>
 
