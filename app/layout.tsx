@@ -5,7 +5,7 @@
  */
 
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Playfair_Display, Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import Header from '../components/layout/header';
@@ -17,6 +17,21 @@ import siteData from '../data/site.json';
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600']
+});
+
+// Playfair Display - elegant serif for hero title
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700'],
+  style: ['italic'],
+  variable: '--font-playfair',
+});
+
+// Poppins - modern sans-serif for bold heading
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['500', '700', '900'],
+  variable: '--font-poppins',
 });
 
 /**
@@ -70,7 +85,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} ${playfair.variable} ${poppins.variable}`}>
         <RegistrationSideStrip />
         <Header />
         <main className="flex-grow min-h-[100dvh]">

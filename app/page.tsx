@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
       <Hero
         title="Doon International School"
         subtitle={siteData.tagline}
-        imageUrl="/assets/hero-fallback.avif"
+        imageUrl="/assets/heroimagenew.jpeg"
         imageAlt="Doon International School campus"
       >
         <Link href="/about">

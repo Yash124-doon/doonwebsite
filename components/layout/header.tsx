@@ -166,13 +166,13 @@ const Header: React.FC = (): JSX.Element => {
             ? `bg-transparent shadow-none`
             : `shadow-lg border-b bg-white border-gray-300`
           }`}>
-          <div className="container px-0.5 pr-2 py-2 md:px-4 md:py-3 lg:py-3 min-h-[5rem] md:min-h-[5rem] lg:min-h-[3rem] grid grid-cols-[auto_1fr_auto] items-center relative gap-4 lg:gap-8">
+          <div className="container px-0.5 pr-2 py-1 md:px-4 md:py-1.5 lg:py-2 min-h-[3.5rem] md:min-h-[3.5rem] lg:min-h-[4rem] grid grid-cols-[auto_1fr_auto] items-center relative gap-4 lg:gap-8">
             {/* LEFT SIDE: LOGO */}
             <div className="flex items-center flex-shrink-0">
               <img
-                src="/assets/logo.webp"
+                src="/assets/doonlogo.png"
                 alt="Doon International School Logo"
-                className="w-24 h-24 md:w-16 md:h-16 lg:w-36 lg:h-36 object-contain"
+                className="w-20 h-20 md:w-20 md:h-20 lg:w-20 lg:h-20 object-contain"
               />
             </div>
 
