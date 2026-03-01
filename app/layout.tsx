@@ -12,7 +12,7 @@ import Header from '../components/layout/header';
 import UnifiedFooter from '../components/layout/UnifiedFooter';
 import RegistrationSideStrip from '../components/ui/registration-side-strip';
 import WhatsAppFloatButton from '../components/ui/whatsapp-float-button';
-import siteData from '../data/site.json';
+// import siteData from '../data/site.json';
 
 // Configure Inter font with multiple weights for consistent typography
 const inter = Inter({
@@ -40,8 +40,11 @@ const poppins = Poppins({
  * Dynamically uses site data for SEO optimization
  */
 export const metadata: Metadata = {
-  title: siteData.siteName,
-  description: siteData.tagline,
+  title: 'Best CBSE School in Jabalpur, Madhya Pradesh | Doon International School',
+  description: 'Looking for the best CBSE school in Jabalpur, Madhya Pradesh? Doon International School offers English medium education, day boarding & hostel facilities with modern sports infrastructure. Admissions for 2026-27 are Open.',
+  alternates: {
+    canonical: 'https://www.dooninternationaljabalpur.com',
+  },
   icons: {
     icon: 'favicon/favicon.ico',
     shortcut: 'favicon/favicon.ico',
