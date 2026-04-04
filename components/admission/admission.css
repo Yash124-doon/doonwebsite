@@ -15,6 +15,10 @@
   background: linear-gradient(135deg, #001a3f 0%, #002B6B 40%, #0a3d8f 100%);
 }
 
+.admission-sticky-footer {
+  display: none;
+}
+
 .admission-hero-overlay {
   position: absolute;
   inset: 0;
@@ -1264,13 +1268,81 @@
     font-size: 1.6rem;
   }
 
-  .admission-sticky-cta {
+  .admission-sticky-footer {
     display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
   }
 
-  /* Add bottom padding so sticky CTA doesn't overlap content */
+  .admission-sticky-footer-inner {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .adm-sticky-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+  }
+
+  .adm-sticky-btn svg {
+    margin-bottom: 2px;
+  }
+
+  .adm-sticky-btn.whatsapp {
+    background: #25D366;
+    color: white;
+  }
+
+  .adm-sticky-btn.apply {
+    background: #002B6B;
+    color: white;
+    flex: 1.5;
+    /* Give more weight to Apply Now */
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .adm-sticky-btn.call {
+    background: #F2B33D;
+    color: #002B6B;
+  }
+
+  .adm-sticky-btn:active {
+    transform: scale(0.95);
+    filter: brightness(0.9);
+  }
+
+  /* Hide global floating buttons on mobile when this landing page is active */
+  #global-whatsapp-btn,
+  #global-call-btn {
+    display: none !important;
+  }
+
+  /* Add bottom padding so footer doesn't overlap content */
   .admission-landing {
-    padding-bottom: 75px;
+    padding-bottom: 90px;
   }
 
   .adm-testimonials {
@@ -1306,5 +1378,261 @@
 
   .adm-trust-counter .value {
     font-size: 2rem;
+  }
+}
+
+/* ───── ADMISSION MODAL ───── */
+.adm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.adm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 18, 50, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+.adm-modal-container {
+  position: relative;
+  background: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  padding: 2.5rem;
+  z-index: 1001;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.adm-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.adm-modal-close:hover {
+  background: #e2e8f0;
+  color: #0c2340;
+  transform: rotate(90deg);
+}
+
+.adm-modal-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.adm-modal-badge {
+  display: inline-block;
+  background: rgba(242, 179, 61, 0.1);
+  color: #c98e1e;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(242, 179, 61, 0.2);
+}
+
+.adm-modal-header h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: #0c2340;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.adm-modal-header p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.adm-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.adm-modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.adm-modal-field.full {
+  grid-column: span 2;
+}
+
+.adm-modal-field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0c2340;
+  padding-left: 2px;
+}
+
+.adm-modal-field input,
+.adm-modal-field select,
+.adm-modal-field textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  background: #f8fafc;
+}
+
+.adm-modal-field input:focus,
+.adm-modal-field select:focus,
+.adm-modal-field textarea:focus {
+  border-color: #002B6B;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 43, 107, 0.1);
+}
+
+.adm-modal-field input.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.adm-modal-field .error-text {
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: 600;
+  padding-left: 2px;
+}
+
+.adm-modal-error {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: #fef2f2;
+  border: 1px solid #fee2e2;
+  border-radius: 12px;
+  color: #b91c1c;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.adm-modal-submit {
+  width: 100%;
+  margin-top: 1.75rem;
+  background: #002B6B;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 16px;
+  border: none;
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(0, 43, 107, 0.2);
+}
+
+.adm-modal-submit:hover:not(:disabled) {
+  background: #003d99;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(0, 43, 107, 0.3);
+}
+
+.adm-modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.adm-modal-note {
+  margin-top: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.spinner-sm {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: adm-spin 0.8s linear infinite;
+}
+
+@keyframes adm-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .adm-modal-container {
+    padding: 0.75rem 1rem;
+    border-radius: 16px;
+    max-height: 98vh;
+    width: 96%;
+  }
+
+  .adm-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .adm-modal-field.full {
+    grid-column: span 1;
+  }
+
+  .adm-modal-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .adm-modal-container {
+    padding: 0.8rem !important;
+  }
+
+  .adm-modal-grid {
+    gap: 0.4rem !important;
+  }
+
+  .adm-modal-header h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .adm-modal-field input,
+  .adm-modal-field select {
+    padding: 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .adm-modal-submit {
+    margin-top: 0.5rem !important;
+    padding: 0.6rem !important;
   }
 }

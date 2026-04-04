@@ -1,50 +1,14 @@
-/**
- * @fileoverview Enquiry API route handler for Doon International School
- * @description Handles enquiry form submissions and sends formatted emails to school administration
- * @author Doon International School Development Team
- */
+const nodemailer = require('nodemailer');
+const { pool } = require('../config/db');
 
-import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+
 
 /**
  * POST /api/enquiry
- *
- * Handles enquiry form submissions from the website contact/enquiry forms.
- * Processes parent/guardian information, student details, and enquiry content,
- * then sends a formatted HTML email to school administration.
- *
- * Process Flow:
- * 1. Parse and validate incoming JSON request body
- * 2. Check for required fields (parentName, email, phone, interestedGrade, enquiryType, preferredContact, message)
- * 3. Configure Gmail SMTP transporter using environment variables
- * 4. Generate responsive HTML email with enquiry details
- * 5. Send email to school administration
- * 6. Return success/error response to client
- *
- * Email Features:
- * - Responsive HTML design with school branding
- * - Structured sections for parent, student, and enquiry information
- * - Direct reply-to functionality
- * - Quick action links for phone and email
- * - Submission timestamp in IST timezone
- * - Professional formatting with school colors
- *
- * Environment Variables Required:
- * - GMAIL_USER: Gmail address for sending emails
- * - GMAIL_APP_PASSWORD: Gmail app password for authentication
- *
- * @param {NextRequest} request - Next.js request object containing form data
- * @returns {Promise<NextResponse>} JSON response with success message or error details
- *
- * @throws {Error} When email sending fails or validation errors occur
+ * Handles enquiry form submissions and sends formatted emails to school administration
  */
-export async function POST(request: NextRequest): Promise<NextResponse> {
+const submitEnquiry = async (req, res) => {
   try {
-    // Parse JSON request body containing form data
-    const body = await request.json();
-
-    // Destructure form fields from request body
     const {
       parentName,
       email,
@@ -55,19 +19,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       enquiryType,
       preferredContact,
       message,
-    } = body;
+    } = req.body;
 
-    // Validate that all required fields are present
-    // This prevents incomplete enquiries from being processed
+    // Validate required fields
     if (!parentName || !email || !phone || !interestedGrade || !enquiryType || !preferredContact || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+      return res.status(400).json({
+        success: false,
+        error: 'Missing required fields',
+      });
     }
 
-    // Configure nodemailer transporter with Gmail SMTP settings
-    // Uses environment variables for security (not hardcoded credentials)
+    // Configure nodemailer transporter with Gmail SMTP
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -76,7 +38,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       },
     });
 
-    // Email content
+    // Email HTML content
     const emailHtml = `
       <!DOCTYPE html>
       <html>
@@ -170,25 +132,143 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // Email options
     const mailOptions = {
       from: `"Doon International School" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER, // Send to the same Gmail account
+      to: process.env.GMAIL_USER,
       subject: `New Enquiry: ${enquiryType} - ${parentName}`,
       html: emailHtml,
-      replyTo: email, // Allow direct reply to the enquirer's email
+      replyTo: email,
     };
 
     // Send email
     await transporter.sendMail(mailOptions);
 
-    return NextResponse.json(
-      { message: 'Enquiry submitted successfully' },
-      { status: 200 }
-    );
-
+    return res.status(200).json({
+      success: true,
+      message: 'Enquiry submitted successfully',
+    });
   } catch (error) {
     console.error('Error sending enquiry email:', error);
-    return NextResponse.json(
-      { error: 'Failed to send enquiry' },
-      { status: 500 }
-    );
+    return res.status(500).json({
+      success: false,
+      error: 'Failed to send enquiry',
+    });
   }
-}
+};
+
+/**
+ * POST /api/admission-enquiry
+ * Handles the new modern admission enquiry form submissions
+ */
+const admissionEnquiry = async (req, res) => {
+  try {
+    const {
+      childFirstName,
+      classId,
+      studentGender,
+      childDateOfBirth,
+      fatherFirstName,
+      motherFirstName,
+      category,
+      mobileNumber,
+      address,
+      email
+    } = req.body;
+
+    // Validate required fields
+    if (
+      !childFirstName || !classId || !studentGender || !childDateOfBirth ||
+      !fatherFirstName || !motherFirstName || !category || !mobileNumber ||
+      !address || !email
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: 'All fields are required'
+      });
+    }
+
+    // Save to database
+    try {
+      const { pool } = require('../config/db'); // Explicitly import inside function
+      const query = `
+        INSERT INTO admission_enquiry (
+          childFirstName, classId, studentGender, childDateOfBirth,
+          fatherFirstName, motherFirstName, category, mobileNumber,
+          address, email
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      `;
+
+      await pool.execute(query, [
+        childFirstName,
+        classId,
+        studentGender,
+        childDateOfBirth,
+        fatherFirstName,
+        motherFirstName,
+        category,
+        mobileNumber,
+        address,
+        email
+      ]);
+    } catch (dbError) {
+      console.error('Database Insertion Failed:', dbError.message);
+      return res.status(500).json({
+        success: false,
+        message: 'Database error: ' + dbError.message
+      });
+    }
+
+    // Email bypass logic: Send email in the background without awaiting it for the response
+    const sendEmail = async () => {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_APP_PASSWORD,
+          },
+        });
+
+        const emailHtml = `
+          <h2>New Admission Enquiry Received</h2>
+          <p><strong>Student Name:</strong> ${childFirstName}</p>
+          <p><strong>Class:</strong> ${classId}</p>
+          <p><strong>Gender:</strong> ${studentGender}</p>
+          <p><strong>DOB:</strong> ${childDateOfBirth}</p>
+          <p><strong>Father's Name:</strong> ${fatherFirstName}</p>
+          <p><strong>Mother's Name:</strong> ${motherFirstName}</p>
+          <p><strong>Category:</strong> ${category}</p>
+          <p><strong>Mobile:</strong> ${mobileNumber}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Address:</strong> ${address}</p>
+        `;
+
+        await transporter.sendMail({
+          from: `"Doon International School" <${process.env.GMAIL_USER}>`,
+          to: process.env.GMAIL_USER,
+          subject: `Admission Enquiry: ${childFirstName} - Class ${classId}`,
+          html: emailHtml,
+        });
+        console.log('✅ Admission enquiry email sent');
+      } catch (emailErr) {
+        console.error('❌ Email bypass (ignored):', emailErr.message);
+      }
+    };
+
+    // Trigger email sending but don't wait for it
+    sendEmail();
+
+    // Send successful response immediately
+    return res.status(201).json({
+      success: true,
+      message: 'Admission enquiry submitted successfully'
+    });
+  } catch (error) {
+    console.error('General Error in admissionEnquiry:', error.message);
+    return res.status(500).json({
+      success: false,
+      message: 'Internal server error: ' + error.message
+    });
+  }
+};
+
+module.exports = { submitEnquiry, admissionEnquiry };
+

@@ -8,11 +8,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display, Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
-import Header from '../components/layout/header';
-import UnifiedFooter from '../components/layout/UnifiedFooter';
-import RegistrationSideStrip from '../components/ui/registration-side-strip';
-import WhatsAppFloatButton from '../components/ui/whatsapp-float-button';
-// import siteData from '../data/site.json';
+import LayoutContent from '@/components/layout/LayoutContent';
 
 // Configure Inter font with multiple weights for consistent typography
 const inter = Inter({
@@ -50,6 +46,9 @@ export const metadata: Metadata = {
     shortcut: 'favicon/favicon.ico',
     apple: 'favicon/favicon.ico',
   },
+  verification: {
+    google: 'G9ld7IDs81MlXRGWdP6d8YQ_dAg7rOZcltt_vWaBIzI',
+  },
 };
 
 /**
@@ -58,9 +57,9 @@ export const metadata: Metadata = {
  * Provides the global structure for all pages in the application:
  * - HTML document setup with proper language attribute
  * - Global font configuration (Inter)
- * - Navigation header (sticky/fixed positioning)
+ * - Navigation header (sticky/fixed positioning) — hidden on /admin routes
  * - Main content area with flex-grow for proper layout
- * - Unified footer with contact and navigation links
+ * - Unified footer with contact and navigation links — hidden on /admin routes
  *
  * @param {Object} props - Component props
  * @param {React.ReactNode} props.children - Page content to be rendered
@@ -74,29 +73,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* New Google Analytics Tag */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-FY0R85Q5RJ"
-          strategy="afterInteractive"
-        />
-        <Script id="google-gtag-ga" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-FY0R85Q5RJ');
-          `}
-        </Script>
       </head>
       <body className={`${inter.className} ${playfair.variable} ${poppins.variable}`}>
-        <RegistrationSideStrip />
-        <Header />
-        <main className="flex-grow min-h-[100dvh]">
-          {children}
-        </main>
-        <UnifiedFooter />
-        <WhatsAppFloatButton />
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WV8JC6KH"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* End Google Tag Manager (noscript) */}
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
   );

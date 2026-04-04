@@ -14,7 +14,7 @@ export default function AdmissionsPage() {
         <div className="absolute inset-0 bg-brand-primary opacity-90">
           <div className="absolute inset-0 bg-brand-secondary opacity-20 animate-pulse" />
         </div>
-        
+
         {/* Floating Elements */}
         <div className="absolute inset-0">
           <motion.div className="absolute top-20 right-20 w-6 h-6 bg-white/30 rounded-full"
@@ -24,7 +24,7 @@ export default function AdmissionsPage() {
             animate={{ rotate: [0, 360], scale: [0.8, 1.2, 0.8] }}
             transition={{ duration: 6, repeat: Infinity, delay: 1 }} />
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
@@ -37,7 +37,7 @@ export default function AdmissionsPage() {
                 <span className="block text-white">Community</span>
               </h1>
             </motion.div>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function AdmissionsPage() {
               Begin an extraordinary educational journey at Doon International School.
               We're excited to welcome new students and families to our vibrant community.
             </motion.p>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ export default function AdmissionsPage() {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <a
-                href="https://disjabalpur.schoolpad.in/enquiryManager/onlineAdmission/8"
+                href="/enquiry"
                 className="btn-mobile bg-brand-primary text-white hover:bg-brand-primary/90 shadow-lg hover:shadow-xl w-full sm:w-auto inline-block"
               >
                 Start Application

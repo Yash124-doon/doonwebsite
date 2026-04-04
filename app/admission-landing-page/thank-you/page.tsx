@@ -16,12 +16,12 @@ import './thank-you.css';
 export default function ThankYouPage() {
   // Fire conversion tracking events on page load
   useEffect(() => {
-    // Google Ads Conversion Tracking (gtag)
+    // Google Ads Conversion Tracking (gtag) — Doon Submit lead form
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'conversion', {
-        send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL', // Replace with your actual conversion ID
-        event_category: 'admission',
-        event_label: 'form_submitted',
+        send_to: 'AW-17973749388/3piuCI7HgoIcEIzNxvpC',
+        value: 1.0,
+        currency: 'INR',
       });
     }
 

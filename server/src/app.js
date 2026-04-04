@@ -1,17 +1,32 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
 
 const admissionRoutes = require('./routes/admission.routes');
+const adminRoutes = require('./routes/admin.routes');
+const enquiryRoutes = require('./routes/enquiry.routes');
+const blogRoutes = require('./routes/blog.routes');
 
 const app = express();
 
 // --------------- Security Middleware ---------------
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+    contentSecurityPolicy: false,
+  })
+);
 
 // --------------- CORS Configuration ---------------
 const allowedOrigins = [
   process.env.FRONTEND_URL || 'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'https://dooninternationaljabalpur.com',
+  'https://www.dooninternationaljabalpur.com',
+  'http://dooninternationaljabalpur.com',
+  'http://www.dooninternationaljabalpur.com',
 ];
 
 app.use(
@@ -31,8 +46,11 @@ app.use(
 );
 
 // --------------- Body Parsing ---------------
-app.use(express.json({ limit: '10kb' }));
-app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// --------------- Static Files (Uploads) ---------------
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // --------------- Health Check ---------------
 app.get('/api/health', (req, res) => {
@@ -45,6 +63,9 @@ app.get('/api/health', (req, res) => {
 
 // --------------- API Routes ---------------
 app.use('/api/admission', admissionRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/enquiry', enquiryRoutes);
+app.use('/api/blogs', blogRoutes);
 
 // --------------- 404 Handler ---------------
 app.use((req, res) => {

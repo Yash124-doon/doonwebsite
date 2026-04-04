@@ -14,6 +14,7 @@ import NewsTickerSection from '../components/blocks/news-ticker-section';
 import WelcomeSection from '../components/blocks/WelcomeSection';
 import DiscoverDoon from '../components/blocks/discover-doon';
 import AcademicsSection from '../components/sections/home/AcademicsSection';
+import OurAssociations from '../components/sections/home/OurAssociations';
 import TiltedCarousel from '../components/blocks/TiltedCarousel';
 
 import PopupModal from '../components/ui/popup-modal';
@@ -60,7 +61,8 @@ export default function Home(): JSX.Element {
       <Hero
         title="Doon International School"
         subtitle={siteData.tagline}
-        videoSrc="https://crm-generalize.dentalguru.software/Assets/DOON%20CHANGES.mp4"
+        // videoSrc="https://crm-generalize.dentalguru.software/Assets/DOON%20CHANGES.mp4"
+        videoSrc="/assets/gallery/videos/DOON%20CHANGES.mp4"
       >
         <Link href="/about">
           <Button size="lg" className="btn-mobile bg-primary text-white hover:bg-primary/90 shadow-lg hover:shadow-xl w-full sm:w-auto">
@@ -83,6 +85,9 @@ export default function Home(): JSX.Element {
       <WelcomeSection />
 
       <RegisterNowSection />
+
+      {/* //Our Associations Page Here */}
+      <OurAssociations />
 
       <DiscoverDoon cards={discoverData.cards as any[]} />
 

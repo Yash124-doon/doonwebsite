@@ -48,7 +48,8 @@ export default function EnquiryForm() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('/api/enquiry', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${API_URL}/api/enquiry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,9 +84,7 @@ export default function EnquiryForm() {
     'Class 7',
     'Class 8',
     'Class 9',
-    'Class 10',
-    'Class 11',
-    'Class 12'
+    'Class 10'
   ];
 
   const enquiryTypes = [
@@ -143,19 +142,19 @@ export default function EnquiryForm() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6 mt-6">
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone Number *</FormLabel>
-                  <FormControl>
-                    <Input type="tel" placeholder="+91 9201591900 / +91 9201591892" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Phone Number *</FormLabel>
+                    <FormControl>
+                      <Input type="tel" placeholder="+91 9201591900 / +91 9201591892" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               <FormField
                 control={form.control}
