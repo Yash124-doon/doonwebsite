@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const socialLinks = [
@@ -47,14 +48,20 @@ const UnifiedFooter: React.FC = () => {
   return (
     <div className="ios-footer-wrapper">
       <footer className="bg-[#002b5b] text-white ios-footer-force-layer">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 border-b border-white/10">
           <div>
-            <h4 className="font-semibold text-lg mb-3 text-white">Doon International School, Jabalpur</h4>
-            <p className="text-sm opacity-80 leading-relaxed">
-              Providing quality education and holistic development for academic excellence.
+            <Link href="/" className="inline-block mb-2 flex justify-center group">
+              <img
+                src="/assets/2doonlogo.png"
+                alt="Doon International School Logo"
+                className="w-20 h-20 md:w-28 md:h-28 "
+              />
+            </Link>
+            <p className="text-sm opacity-80 leading-relaxed mb-6">
+              Empowering students through academic excellence and holistic development since 2004.
             </p>
-            <div className="mt-5">
-              <h5 className="font-semibold text-sm mb-3 text-white/90">Follow Us</h5>
+            <div>
+              <h5 className="font-semibold text-xs uppercase tracking-wider mb-3 text-white/60">Follow Us</h5>
               <div className="flex gap-3">
                 {socialLinks.map((social) => (
                   <a
@@ -63,7 +70,7 @@ const UnifiedFooter: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className={`w-9 h-9 rounded-full bg-white/10 flex items-center justify-center transition-colors duration-200 ${social.hoverColor}`}
+                    className={`w-9 h-9 rounded-full bg-white/10 flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.hoverColor}`}
                   >
                     {social.icon}
                   </a>
@@ -73,34 +80,70 @@ const UnifiedFooter: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-3 text-white">Contact</h4>
-            <ul className="text-sm space-y-2 opacity-80">
-              <li>Nagpur Rd, opposite Tata Motors, Manegaon, Jabalpur, Madhya Pradesh 482051</li>
-              <li>📞 +91 9201591900 / +91 9201591892</li>
-              <li>✉️ info@dooninternationaljabalpur.com</li>
+            <h4 className="font-semibold text-base mb-4 text-white uppercase tracking-wide">About DISJ</h4>
+            <ul className="text-sm space-y-2.5 opacity-80">
+              <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/about/chairmans-message" className="hover:text-white transition-colors">Chairman's Message</a></li>
+              <li><a href="/principal-vision" className="hover:text-white transition-colors">Principal's Message</a></li>
+              <li><a href="/about/founder" className="hover:text-white transition-colors">Our Founder</a></li>
+              <li><a href="/about/board-directors" className="hover:text-white transition-colors">Board of Directors</a></li>
+              <li><a href="/about/mission-vision" className="hover:text-white transition-colors">Mission And Vision</a></li>
+              <li><a href="/achievements" className="hover:text-white transition-colors">Achievements</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold text-lg mb-3 text-white">Quick Links</h4>
-            <ul className="text-sm space-y-2 opacity-80">
-              <li><a href="/about" className="hover:underline">About Us</a></li>
-              <li><a href="/admission-landing-page" className="hover:underline">Admissions</a></li>
-              <li><a href="/updates" className="hover:underline">Updates</a></li>
-              <li><a href="/blog" className="hover:underline">Blogs</a></li>
-              <li><a href="/gallery" className="hover:underline">Gallery</a></li>
-              <li><a href="/contact" className="hover:underline">Contact Us</a></li>
-              {/* <li><a href="/feedback" className="hover:underline">Feedback</a></li> */}
+            <h4 className="font-semibold text-base mb-4 text-white uppercase tracking-wide">Academics & Life</h4>
+            <ul className="text-sm space-y-2.5 opacity-80">
+              <li><a href="/academics" className="hover:text-white transition-colors">Academics</a></li>
+              <li><a href="/updates/awards" className="hover:text-white transition-colors">Awards</a></li>
+              <li><a href="/beyond-classroom" className="hover:text-white transition-colors">Beyond Classroom</a></li>
+              <li><a href="/about#facilities" className="hover:text-white transition-colors">School Facilities</a></li>
+              <li><a href="/blog" className="hover:text-white transition-colors">Blogs & News</a></li>
+              <li><a href="/gallery" className="hover:text-white transition-colors">Photo Gallery</a></li>
+              <li><a href="/updates" className="hover:text-white transition-colors">Happenings</a></li>
             </ul>
           </div>
 
-          <div className="flex flex-col items-start md:items-end">
-            <div className="bg-[#0A2A5C] rounded-lg p-1 ios-safari-map-wrapper">
+          <div>
+            <h4 className="font-semibold text-base mb-4 text-white uppercase tracking-wide">Quick Access</h4>
+            <ul className="text-sm space-y-2.5 opacity-80">
+              <li><a href="/admission-landing-page" className="hover:text-white transition-colors">Admissions</a></li>
+              <li><a href="/mandatory-disclosure" className="hover:text-white transition-colors">Mandatory Disclosure</a></li>
+              <li><a href="/admission-landing-page#fees" className="hover:text-white transition-colors">Fee Structure</a></li>
+              <li><a href="/enquiry" className="hover:text-white transition-colors">Admission Enquiry</a></li>
+              <li><a href="/support-services/erp" className="hover:text-white transition-colors">School ERP</a></li>
+              <li><a href="/contact" className="hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="/career" className="hover:text-white transition-colors">Careers</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-base mb-4 text-white uppercase tracking-wide">Contact</h4>
+            <ul className="text-sm space-y-4 opacity-80">
+              <li className="flex gap-2">
+                <span className="shrink-0">📍</span>
+                <span>Nagpur Rd, opposite Tata Motors, Manegaon, Jabalpur, 482051</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="shrink-0">📞</span>
+                <span>+91 92015 91900<br />+91 92015 91893</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="shrink-0">✉️</span>
+                <span className="break-all">info@dooninternationaljabalpur.com</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="lg:text-right">
+            <h4 className="font-semibold text-base mb-4 text-white uppercase tracking-wide md:hidden lg:block">Locate Us</h4>
+            <div className="bg-[#0A2A5C] rounded-lg p-1 inline-block ios-safari-map-wrapper shadow-lg overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.719629944034!2d79.91134377531525!3d23.070738279140134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3981b3a02a7cdb21%3A0x58771697fa8990ee!2sDoon%20International%20School!5e0!3m2!1sen!2sin!4v1761893512458!5m2!1sen!2sin"
-                width="300"
-                height="180"
-                className="rounded-lg border-0 bg-[#0A2A5C]"
+                width="200"
+                height="150"
+                className="rounded-lg border-0 bg-[#0A2A5C] lg:w-[180px] xl:w-[220px]"
                 loading="lazy"
                 title="Doon International School Map"
                 frameBorder="0"

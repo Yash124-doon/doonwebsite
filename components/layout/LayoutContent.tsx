@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import Header from './header';
 import UnifiedFooter from './UnifiedFooter';
-import RegistrationSideStrip from '../ui/registration-side-strip';
 import WhatsAppFloatButton from '../ui/whatsapp-float-button';
 import CallFloatButton from '../ui/call-float-button';
 
@@ -28,7 +27,6 @@ export default function LayoutContent({
   // All other pages: normal website layout
   return (
     <>
-      <RegistrationSideStrip />
       <Header />
       <main className="flex-grow min-h-[100dvh]">
         {children}

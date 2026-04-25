@@ -14,6 +14,7 @@ interface Lead {
   phone: string;
   class_applied: string | null;
   message: string | null;
+  status: 'Pending' | 'IN' | 'Not interesting' | 'HOld' | 'Call not pickup' | 'Fake Leads';
   created_at: string;
 }
 
@@ -48,7 +49,44 @@ interface BlogPost {
   updated_at: string;
 }
 
-type ActiveTab = 'dashboard' | 'leads' | 'blogs';
+interface AdmissionEnquiry {
+  id: number;
+  childFirstName: string;
+  classId: string;
+  studentGender: string;
+  childDateOfBirth: string;
+  fatherFirstName: string;
+  motherFirstName: string;
+  category: string;
+  mobileNumber: string;
+  address: string;
+  email: string;
+  created_at: string;
+}
+
+interface CareerJob {
+  id: number;
+  title: string;
+  type: string;
+  experience: string | null;
+  qualification: string | null;
+  status: 'Open' | 'Closed';
+  created_at: string;
+}
+
+interface CareerApplication {
+  id: number;
+  job_id: number | null;
+  first_name: string;
+  last_name: string;
+  email: string;
+  position: string;
+  resume_path: string | null;
+  summary: string | null;
+  created_at: string;
+}
+
+type ActiveTab = 'dashboard' | 'leads' | 'blogs' | 'careerJobs' | 'careerApps' | 'admissionEnquiries';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -85,6 +123,32 @@ export default function AdminDashboard() {
   const [blogFormLoading, setBlogFormLoading] = useState(false);
   const [blogMsg, setBlogMsg] = useState({ type: '', text: '' });
   const editorRef = useRef<HTMLDivElement>(null);
+
+  // Career state
+  const [careerJobs, setCareerJobs] = useState<CareerJob[]>([]);
+  const [careerApps, setCareerApps] = useState<CareerApplication[]>([]);
+  const [showJobForm, setShowJobForm] = useState(false);
+  const [editingJob, setEditingJob] = useState<CareerJob | null>(null);
+  const [jobFormData, setJobFormData] = useState({
+    title: '',
+    type: 'Full-time',
+    experience: '',
+    qualification: '',
+    status: 'Open' as 'Open' | 'Closed'
+  });
+  const [jobMsg, setJobMsg] = useState({ type: '', text: '' });
+  const [isCareerLoading, setIsCareerLoading] = useState(false);
+
+  // Admission Enquiries state
+  const [admissionEnquiries, setAdmissionEnquiries] = useState<AdmissionEnquiry[]>([]);
+  const [isAdmissionsLoading, setIsAdmissionsLoading] = useState(false);
+  const [admissionSearch, setAdmissionSearch] = useState('');
+  const [admissionPagination, setAdmissionPagination] = useState({ page: 1, limit: 20, total: 0, totalPages: 0 });
+  const [selectedEnquiry, setSelectedEnquiry] = useState<AdmissionEnquiry | null>(null);
+
+  // Simple Leads Details state
+  const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
+  const [isUpdatingStatus, setIsUpdatingStatus] = useState(false);
 
   // Initialize rich text editor content when the form opens
   useEffect(() => {
@@ -175,13 +239,65 @@ export default function AdminDashboard() {
     }
   }, [blogSearch, blogStatusFilter]);
 
+  // Fetch Career Jobs
+  const fetchCareerJobs = useCallback(async () => {
+    setIsCareerLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/api/career/admin/jobs`, { headers: getHeaders() });
+      if (res.status === 401) { handleLogout(); return; }
+      const data = await res.json();
+      if (data.success) setCareerJobs(data.data);
+    } catch (err) {
+      console.error('Career jobs fetch error:', err);
+    } finally {
+      setIsCareerLoading(false);
+    }
+  }, []);
+
+  // Fetch Career Applications
+  const fetchCareerApps = useCallback(async () => {
+    setIsCareerLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/api/career/admin/applications`, { headers: getHeaders() });
+      if (res.status === 401) { handleLogout(); return; }
+      const data = await res.json();
+      if (data.success) setCareerApps(data.data);
+    } catch (err) {
+      console.error('Career applications fetch error:', err);
+    } finally {
+      setIsCareerLoading(false);
+    }
+  }, []);
+
+  // Fetch Detailed Admission Enquiries
+  const fetchAdmissionEnquiries = useCallback(async (pageIdx = 1) => {
+    setIsAdmissionsLoading(true);
+    try {
+      const url = `${API_URL}/api/admin/admission-enquiries?page=${pageIdx}&limit=${admissionPagination.limit}&search=${admissionSearch}`;
+      const res = await fetch(url, { headers: getHeaders() });
+      if (res.status === 401) { handleLogout(); return; }
+      const data = await res.json();
+      if (data.success) {
+        setAdmissionEnquiries(data.data);
+        setAdmissionPagination(data.pagination);
+      }
+    } catch (err) {
+      console.error('Admission enquiries fetch error:', err);
+    } finally {
+      setIsAdmissionsLoading(false);
+    }
+  }, [admissionSearch, admissionPagination.limit]);
+
   useEffect(() => {
     const token = localStorage.getItem('admin_token');
     if (!token) return;
     if (activeTab === 'dashboard') fetchDashboard();
     else if (activeTab === 'leads') fetchLeads();
     else if (activeTab === 'blogs') fetchBlogs();
-  }, [activeTab, fetchDashboard, fetchLeads, fetchBlogs]);
+    else if (activeTab === 'careerJobs') fetchCareerJobs();
+    else if (activeTab === 'careerApps') fetchCareerApps();
+    else if (activeTab === 'admissionEnquiries') fetchAdmissionEnquiries();
+  }, [activeTab, fetchDashboard, fetchLeads, fetchBlogs, fetchCareerJobs, fetchCareerApps, fetchAdmissionEnquiries]);
 
   // Delete lead
   const handleDelete = async (id: number) => {
@@ -206,6 +322,40 @@ export default function AdminDashboard() {
     localStorage.removeItem('admin_name');
     localStorage.removeItem('admin_email');
     router.push('/admin');
+  };
+
+  const handleStatusUpdate = async (id: number, newStatus: string) => {
+    setIsUpdatingStatus(true);
+    try {
+      const res = await fetch(`${API_URL}/api/admin/leads/${id}/status`, {
+        method: 'PATCH',
+        headers: getHeaders(),
+        body: JSON.stringify({ status: newStatus }),
+      });
+      if (res.ok) {
+        // Update local state for modal if open
+        if (selectedLead && selectedLead.id === id) {
+          setSelectedLead({ ...selectedLead, status: newStatus as any });
+        }
+        fetchLeads(pagination.page); // Refresh table
+      }
+    } catch (err) {
+      console.error('Status update error:', err);
+    } finally {
+      setIsUpdatingStatus(false);
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'IN': return '#10b981'; // Green
+      case 'Pending': return '#f59e0b'; // Gold
+      case 'HOld': return '#8b5cf6'; // Purple
+      case 'Not interesting': return '#64748b'; // Gray
+      case 'Call not pickup': return '#f43f5e'; // Rose
+      case 'Fake Leads': return '#000000'; // Black
+      default: return '#888';
+    }
   };
 
   // Search handler with debounce
@@ -374,6 +524,9 @@ export default function AdminDashboard() {
       case 'dashboard': return 'Dashboard';
       case 'leads': return 'Admission Leads';
       case 'blogs': return showBlogForm ? (editingBlog ? 'Edit Blog Post' : 'Create New Blog') : 'Blog Management';
+      case 'careerJobs': return showJobForm ? (editingJob ? 'Edit Career Opening' : 'Add New Opening') : 'Career Openings';
+      case 'careerApps': return 'Career Inquiries';
+      case 'admissionEnquiries': return 'Admission Enquiries (Detailed)';
     }
   };
 
@@ -382,6 +535,87 @@ export default function AdminDashboard() {
       case 'dashboard': return 'Overview of your admission leads';
       case 'leads': return 'Manage all admission inquiries';
       case 'blogs': return showBlogForm ? 'Fill in the blog details below' : 'Create, edit, and manage blog posts';
+      case 'careerJobs': return showJobForm ? 'Define the job details below' : 'Manage your school vacancies';
+      case 'careerApps': return 'Track and respond to career queries';
+      case 'admissionEnquiries': return 'View and manage detailed registration forms';
+    }
+  };
+
+  // ─────────── Admission Enquiry Handlers ───────────
+  const deleteAdmissionEnquiry = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this enquiry form?')) return;
+    try {
+      const res = await fetch(`${API_URL}/api/admin/admission-enquiries/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+      });
+      if (res.ok) fetchAdmissionEnquiries();
+    } catch (err) {
+      console.error('Delete enquiry error:', err);
+    }
+  };
+
+  // ─────────── Career Handlers ───────────
+  const resetJobForm = () => {
+    setJobFormData({ title: '', type: 'Full-time', experience: '', qualification: '', status: 'Open' });
+    setEditingJob(null);
+    setJobMsg({ type: '', text: '' });
+  };
+
+  const handleJobSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setJobMsg({ type: '', text: '' });
+
+    try {
+      const url = editingJob 
+        ? `${API_URL}/api/career/admin/jobs/${editingJob.id}`
+        : `${API_URL}/api/career/admin/jobs`;
+      
+      const method = editingJob ? 'PUT' : 'POST';
+
+      const res = await fetch(url, {
+        method,
+        headers: getHeaders(),
+        body: JSON.stringify(jobFormData)
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setJobMsg({ type: 'success', text: data.message });
+        setTimeout(() => {
+          setShowJobForm(false);
+          resetJobForm();
+          fetchCareerJobs();
+        }, 1200);
+      }
+    } catch (err) {
+      console.error('Job sumbit error:', err);
+    }
+  };
+
+  const deleteJob = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this job opening?')) return;
+    try {
+      const res = await fetch(`${API_URL}/api/career/admin/jobs/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+      });
+      if (res.ok) fetchCareerJobs();
+    } catch (err) {
+      console.error('Delete job error:', err);
+    }
+  };
+
+  const deleteApp = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this application?')) return;
+    try {
+      const res = await fetch(`${API_URL}/api/career/admin/applications/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+      });
+      if (res.ok) fetchCareerApps();
+    } catch (err) {
+      console.error('Delete application error:', err);
     }
   };
 
@@ -422,8 +656,15 @@ export default function AdminDashboard() {
             className={`admin-nav-item ${activeTab === 'leads' ? 'active' : ''}`}
             onClick={() => { setActiveTab('leads'); setSidebarOpen(false); setShowBlogForm(false); }}
           >
-            <i className="fas fa-user-graduate" />
-            Admission Leads
+            <i className="fas fa-user-friends" />
+            Admission Leads (Simple)
+          </button>
+          <button
+            className={`admin-nav-item ${activeTab === 'admissionEnquiries' ? 'active' : ''}`}
+            onClick={() => { setActiveTab('admissionEnquiries'); setSidebarOpen(false); setShowBlogForm(false); }}
+          >
+            <i className="fas fa-id-card" />
+            Admission Forms (Detailed)
           </button>
           <button
             className={`admin-nav-item ${activeTab === 'blogs' ? 'active' : ''}`}
@@ -431,6 +672,20 @@ export default function AdminDashboard() {
           >
             <i className="fas fa-blog" />
             Blog Posts
+          </button>
+          <button
+            className={`admin-nav-item ${activeTab === 'careerJobs' ? 'active' : ''}`}
+            onClick={() => { setActiveTab('careerJobs'); setSidebarOpen(false); setShowBlogForm(false); }}
+          >
+            <i className="fas fa-briefcase" />
+            Career Openings
+          </button>
+          <button
+            className={`admin-nav-item ${activeTab === 'careerApps' ? 'active' : ''}`}
+            onClick={() => { setActiveTab('careerApps'); setSidebarOpen(false); setShowBlogForm(false); }}
+          >
+            <i className="fas fa-file-alt" />
+            Career Queries
           </button>
 
           <div className="admin-nav-label">Quick Links</div>
@@ -539,6 +794,7 @@ export default function AdminDashboard() {
                             <th>Parent</th>
                             <th>Phone</th>
                             <th>Class</th>
+                            <th>Status</th>
                             <th>Date</th>
                             <th>Actions</th>
                           </tr>
@@ -551,17 +807,38 @@ export default function AdminDashboard() {
                                 <td>{lead.parent_name || '—'}</td>
                                 <td className="phone-cell">{lead.phone}</td>
                                 <td>{lead.class_applied ? <span className="class-badge">{lead.class_applied}</span> : '—'}</td>
+                                <td>
+                                  <span 
+                                    className="status-badge" 
+                                    style={{ 
+                                      backgroundColor: getStatusColor(lead.status) + '15',
+                                      color: getStatusColor(lead.status),
+                                      fontSize: '0.65rem',
+                                      fontWeight: 700,
+                                      padding: '2px 6px',
+                                      borderRadius: '4px',
+                                      textTransform: 'uppercase'
+                                    }}
+                                  >
+                                    {lead.status || 'Pending'}
+                                  </span>
+                                </td>
                                 <td className="date-cell">{formatDate(lead.created_at)}</td>
                                 <td>
-                                  <button className="action-btn" title="Delete" onClick={() => handleDelete(lead.id)}>
-                                    <i className="fas fa-trash-alt" />
-                                  </button>
+                                  <div className="admin-flex-actions">
+                                    <button className="action-btn" title="View & Manage" onClick={() => { setActiveTab('leads'); setSelectedLead(lead); }}>
+                                      <i className="fas fa-eye" />
+                                    </button>
+                                    <button className="action-btn delete" title="Delete" onClick={() => handleDelete(lead.id)}>
+                                      <i className="fas fa-trash-alt" />
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             ))
                           ) : (
                             <tr>
-                              <td colSpan={6}>
+                              <td colSpan={7}>
                                 <div className="admin-empty-state">
                                   <i className="fas fa-inbox" />
                                   <h3>No leads yet</h3>
@@ -645,7 +922,7 @@ export default function AdminDashboard() {
                             <th>Parent Name</th>
                             <th>Phone</th>
                             <th>Class</th>
-                            <th>Message</th>
+                            <th>Status</th>
                             <th>Date &amp; Time</th>
                             <th>Actions</th>
                           </tr>
@@ -665,17 +942,38 @@ export default function AdminDashboard() {
                                     <span className="class-badge">{lead.class_applied}</span>
                                   ) : '—'}
                                 </td>
-                                <td style={{ maxWidth: '200px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', fontSize: '0.82rem', color: '#777' }}>
-                                  {lead.message || '—'}
+                                <td>
+                                  <span 
+                                    className="status-badge" 
+                                    style={{ 
+                                      backgroundColor: getStatusColor(lead.status) + '15',
+                                      color: getStatusColor(lead.status),
+                                      border: `1px solid ${getStatusColor(lead.status)}30`,
+                                      padding: '3px 10px',
+                                      borderRadius: '6px',
+                                      fontSize: '0.75rem',
+                                      fontWeight: 700,
+                                      display: 'inline-block',
+                                      textTransform: 'uppercase',
+                                      letterSpacing: '0.02em'
+                                    }}
+                                  >
+                                    {lead.status || 'Pending'}
+                                  </span>
                                 </td>
                                 <td className="date-cell">
                                   {formatDate(lead.created_at)}<br />
                                   <span style={{ fontSize: '0.72rem' }}>{formatTime(lead.created_at)}</span>
                                 </td>
                                 <td>
-                                  <button className="action-btn" title="Delete" onClick={() => handleDelete(lead.id)}>
-                                    <i className="fas fa-trash-alt" />
-                                  </button>
+                                  <div className="admin-flex-actions">
+                                    <button className="action-btn" title="View & Manage" onClick={() => setSelectedLead(lead)}>
+                                      <i className="fas fa-eye" />
+                                    </button>
+                                    <button className="action-btn delete" title="Delete" onClick={() => handleDelete(lead.id)}>
+                                      <i className="fas fa-trash-alt" />
+                                    </button>
+                                  </div>
                                 </td>
                               </tr>
                             ))
@@ -733,7 +1031,7 @@ export default function AdminDashboard() {
                 )}
               </div>
             </>
-          ) : (
+          ) : activeTab === 'blogs' ? (
             /* ─────────── BLOGS TAB ─────────── */
             <>
               {showBlogForm ? (
@@ -1102,7 +1400,419 @@ export default function AdminDashboard() {
                 </div>
               )}
             </>
+          ) : activeTab === 'careerJobs' ? (
+            /* ─────────── CAREER JOBS TAB ─────────── */
+            <div className="admin-table-card">
+              <div className="admin-table-header">
+                <h2>{getTabTitle()}</h2>
+                {!showJobForm && (
+                  <button className="admin-btn-primary" onClick={() => { resetJobForm(); setShowJobForm(true); }}>
+                    <i className="fas fa-plus" /> New Opening
+                  </button>
+                )}
+              </div>
+
+              {showJobForm ? (
+                <div className="admin-form-body">
+                  {jobMsg.text && (
+                    <div className={jobMsg.type === 'success' ? 'admin-success-msg' : 'admin-error-msg'}>
+                      <i className={`fas ${jobMsg.type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}`} />
+                      {jobMsg.text}
+                    </div>
+                  )}
+                  <form onSubmit={handleJobSubmit} className="admin-blog-form">
+                    <div className="admin-form-group">
+                      <label>Job Title <span className="required">*</span></label>
+                      <input 
+                        type="text" 
+                        required 
+                        value={jobFormData.title}
+                        onChange={e => setJobFormData({...jobFormData, title: e.target.value})}
+                        placeholder="e.g. PGT - Mathematics"
+                      />
+                    </div>
+                    <div className="admin-blog-form-grid">
+                      <div className="admin-form-group">
+                        <label>Job Type</label>
+                        <select value={jobFormData.type} onChange={e => setJobFormData({...jobFormData, type: e.target.value})}>
+                          <option value="Full-time">Full-time</option>
+                          <option value="Part-time">Part-time</option>
+                          <option value="Contract">Contract</option>
+                        </select>
+                      </div>
+                      <div className="admin-form-group">
+                        <label>Status</label>
+                        <select value={jobFormData.status} onChange={e => setJobFormData({...jobFormData, status: e.target.value as 'Open' | 'Closed'})}>
+                          <option value="Open">Open</option>
+                          <option value="Closed">Closed</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="admin-blog-form-grid">
+                      <div className="admin-form-group">
+                        <label>Experience Required</label>
+                        <input 
+                          type="text" 
+                          value={jobFormData.experience}
+                          onChange={e => setJobFormData({...jobFormData, experience: e.target.value})}
+                          placeholder="e.g. 3-5 Years"
+                        />
+                      </div>
+                      <div className="admin-form-group">
+                        <label>Qualification</label>
+                        <input 
+                          type="text" 
+                          value={jobFormData.qualification}
+                          onChange={e => setJobFormData({...jobFormData, qualification: e.target.value})}
+                          placeholder="e.g. Post Graduate with B.Ed"
+                        />
+                      </div>
+                    </div>
+                    <div className="admin-form-actions">
+                      <button type="button" className="admin-btn-secondary" onClick={() => setShowJobForm(false)}>Cancel</button>
+                      <button type="submit" className="admin-btn-primary">
+                        {editingJob ? 'Update Opening' : 'Save Opening'}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              ) : (
+                <div className="admin-table-wrapper">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Job Title</th>
+                        <th>Type</th>
+                        <th>Experience</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {careerJobs.length > 0 ? (
+                        careerJobs.map(job => (
+                          <tr key={job.id}>
+                            <td className="name-cell">{job.title}</td>
+                            <td>{job.type}</td>
+                            <td>{job.experience || '—'}</td>
+                            <td>
+                              <span className={`status-badge ${job.status === 'Open' ? 'published' : 'draft'}`}>
+                                {job.status}
+                              </span>
+                            </td>
+                            <td>
+                              <div className="admin-flex-actions">
+                                <button className="action-btn" onClick={() => {
+                                  setEditingJob(job);
+                                  setJobFormData({
+                                    title: job.title,
+                                    type: job.type,
+                                    experience: job.experience || '',
+                                    qualification: job.qualification || '',
+                                    status: job.status
+                                  });
+                                  setShowJobForm(true);
+                                }}>
+                                  <i className="fas fa-edit" />
+                                </button>
+                                <button className="action-btn delete" onClick={() => deleteJob(job.id)}>
+                                  <i className="fas fa-trash-alt" />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={5} className="text-center py-10 text-gray-400">No job openings found.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          ) : activeTab === 'careerApps' ? (
+            /* ─────────── CAREER APPLICATIONS TAB ─────────── */
+            <div className="admin-table-card">
+              <div className="admin-table-header">
+                <h2>{getTabTitle()}</h2>
+              </div>
+              <div className="admin-table-wrapper">
+                <table className="admin-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Position</th>
+                      <th>Resume</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {careerApps.length > 0 ? (
+                      careerApps.map(app => (
+                        <tr key={app.id}>
+                          <td className="name-cell">{app.first_name} {app.last_name}</td>
+                          <td>{app.email}</td>
+                          <td>{app.position}</td>
+                          <td>
+                            {app.resume_path ? (
+                              <a 
+                                href={`${API_URL}${app.resume_path}`} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="admin-btn-small"
+                              >
+                                <i className="fas fa-download" /> Download
+                              </a>
+                            ) : (
+                              <span className="text-gray-400">No Resume</span>
+                            )}
+                          </td>
+                          <td className="date-cell">{formatDate(app.created_at)}</td>
+                          <td>
+                            <button className="action-btn delete" onClick={() => deleteApp(app.id)}>
+                              <i className="fas fa-trash-alt" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
+                      <tr>
+                        <td colSpan={6} className="text-center py-10 text-gray-400">No applications received yet.</td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : activeTab === 'admissionEnquiries' ? (
+            /* ─────────── ADMISSION ENQUIRIES TAB ─────────── */
+            <>
+              <div className="admin-table-card">
+                <div className="admin-table-header">
+                  <h2>{getTabTitle()}</h2>
+                  <div className="admin-table-actions">
+                    <div className="admin-search-box">
+                      <i className="fas fa-search" />
+                      <input 
+                        type="search" 
+                        placeholder="Search child, father, or phone..." 
+                        value={admissionSearch}
+                        onChange={e => setAdmissionSearch(e.target.value)}
+                        onKeyPress={e => e.key === 'Enter' && fetchAdmissionEnquiries(1)}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="admin-table-wrapper">
+                  <table className="admin-table">
+                    <thead>
+                      <tr>
+                        <th>Child Name</th>
+                        <th>Class</th>
+                        <th>Gender</th>
+                        <th>Father's Name</th>
+                        <th>Mobile</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {admissionEnquiries.length > 0 ? (
+                        admissionEnquiries.map(enquiry => (
+                          <tr key={enquiry.id}>
+                            <td className="name-cell">{enquiry.childFirstName}</td>
+                            <td>{enquiry.classId}</td>
+                            <td>{enquiry.studentGender}</td>
+                            <td>{enquiry.fatherFirstName}</td>
+                            <td>{enquiry.mobileNumber}</td>
+                            <td className="date-cell">{formatDate(enquiry.created_at)}</td>
+                            <td>
+                              <div className="admin-flex-actions">
+                                <button className="action-btn" title="View Details" onClick={() => setSelectedEnquiry(enquiry)}>
+                                  <i className="fas fa-eye" />
+                                </button>
+                                <button className="action-btn delete" onClick={() => deleteAdmissionEnquiry(enquiry.id)}>
+                                  <i className="fas fa-trash-alt" />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={7} className="text-center py-10 text-gray-400">No registration forms found.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {admissionPagination.totalPages > 1 && (
+                  <div className="admin-pagination">
+                    <div className="admin-pagination-info">
+                      Showing {(admissionPagination.page - 1) * admissionPagination.limit + 1}–
+                      {Math.min(admissionPagination.page * admissionPagination.limit, admissionPagination.total)} of {admissionPagination.total}
+                    </div>
+                    <div className="admin-pagination-btns">
+                      <button
+                        disabled={admissionPagination.page <= 1}
+                        onClick={() => fetchAdmissionEnquiries(admissionPagination.page - 1)}
+                      >
+                        <i className="fas fa-chevron-left" />
+                      </button>
+                      <button className="active">{admissionPagination.page}</button>
+                      <button
+                        disabled={admissionPagination.page >= admissionPagination.totalPages}
+                        onClick={() => fetchAdmissionEnquiries(admissionPagination.page + 1)}
+                      >
+                        <i className="fas fa-chevron-right" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : null}
+
+          {/* ─────────── GLOBAL MODALS (Accessible from any tab) ─────────── */}
+          
+          {/* Detailed Admission Form Details Modal */}
+          {selectedEnquiry && (
+            <div className="admin-modal-overlay" onClick={() => setSelectedEnquiry(null)}>
+              <div className="admin-modal-content" onClick={e => e.stopPropagation()}>
+                <div className="admin-modal-header">
+                  <h3><i className="fas fa-id-card" style={{ marginRight: '10px' }} /> Admission Form Details</h3>
+                  <button className="close-modal" onClick={() => setSelectedEnquiry(null)}>
+                    <i className="fas fa-times" />
+                  </button>
+                </div>
+                <div className="admin-modal-body">
+                  <div className="details-grid">
+                    <div className="details-section">
+                      <h4><i className="fas fa-child" /> Child Information</h4>
+                      <p><strong>Name:</strong> <span>{selectedEnquiry.childFirstName}</span></p>
+                      <p><strong>Class:</strong> <span>{selectedEnquiry.classId}</span></p>
+                      <p><strong>Gender:</strong> <span>{selectedEnquiry.studentGender}</span></p>
+                      <p><strong>D.O.B:</strong> <span>{new Date(selectedEnquiry.childDateOfBirth).toLocaleDateString('en-IN')}</span></p>
+                      <p><strong>Category:</strong> <span>{selectedEnquiry.category}</span></p>
+                    </div>
+                    <div className="details-section">
+                      <h4><i className="fas fa-user-friends" /> Parent Information</h4>
+                      <p><strong>Father:</strong> <span>{selectedEnquiry.fatherFirstName}</span></p>
+                      <p><strong>Mother:</strong> <span>{selectedEnquiry.motherFirstName}</span></p>
+                      <p><strong>Mobile:</strong> <span>{selectedEnquiry.mobileNumber}</span></p>
+                      <p><strong>Email:</strong> <span>{selectedEnquiry.email}</span></p>
+                    </div>
+                    <div className="details-section full-width">
+                      <h4><i className="fas fa-map-marker-alt" /> Contact Details</h4>
+                      <p><strong>Address:</strong> <span style={{ textAlign: 'right' }}>{selectedEnquiry.address}</span></p>
+                    </div>
+                    <div className="details-section full-width">
+                      <h4><i className="fas fa-clock" /> Submission Details</h4>
+                      <p><strong>Submitted On:</strong> <span>{new Date(selectedEnquiry.created_at).toLocaleString('en-IN')}</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div className="admin-modal-footer">
+                  <button className="admin-btn-secondary" onClick={() => setSelectedEnquiry(null)}>
+                    <i className="fas fa-times" /> Close
+                  </button>
+                </div>
+              </div>
+            </div>
           )}
+
+          {/* Simple Lead Details Modal */}
+          {selectedLead && (
+            <div className="admin-modal-overlay" onClick={() => setSelectedLead(null)}>
+              <div className="admin-modal-content" onClick={e => e.stopPropagation()}>
+                <div className="admin-modal-header">
+                  <h3><i className="fas fa-user-graduate" style={{ marginRight: '10px' }} /> Lead Management</h3>
+                  <button className="close-modal" onClick={() => setSelectedLead(null)}>
+                    <i className="fas fa-times" />
+                  </button>
+                </div>
+                <div className="admin-modal-body">
+                  <div className="details-grid">
+                    <div className="details-section">
+                      <h4><i className="fas fa-info-circle" /> Contact Details</h4>
+                      <p><strong>Student Name:</strong> <span>{selectedLead.student_name}</span></p>
+                      <p><strong>Parent Name:</strong> <span>{selectedLead.parent_name || '—'}</span></p>
+                      <p><strong>Phone:</strong> <span>{selectedLead.phone}</span></p>
+                      <p><strong>Class:</strong> <span>{selectedLead.class_applied || '—'}</span></p>
+                    </div>
+                    <div className="details-section">
+                      <h4><i className="fas fa-flag" /> Current Status</h4>
+                      <div style={{ padding: '1rem', textAlign: 'center', borderRadius: '10px', background: getStatusColor(selectedLead.status) + '10', border: `1px solid ${getStatusColor(selectedLead.status)}20` }}>
+                        <span style={{ fontSize: '1.2rem', fontWeight: 800, color: getStatusColor(selectedLead.status) }}>
+                          {selectedLead.status || 'Pending'}
+                        </span>
+                        <p style={{ margin: '0.5rem 0 0', fontSize: '0.75rem', color: '#999', justifyContent: 'center' }}>
+                          Last updated: {formatDate(selectedLead.created_at)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="details-section full-width">
+                      <h4><i className="fas fa-comment-dots" /> Inquiry Message</h4>
+                      <p style={{ display: 'block', lineHeight: '1.6', color: '#666', background: '#fff', padding: '1rem', borderRadius: '8px', border: '1px solid #eef0f4' }}>
+                        {selectedLead.message || 'No message provided.'}
+                      </p>
+                    </div>
+                    
+                    <div className="details-section full-width" style={{ background: '#f0f4f8' }}>
+                      <h4 style={{ color: '#002B6B' }}><i className="fas fa-edit" /> Update Inquiry Status</h4>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginTop: '0.5rem' }}>
+                        {[
+                          { id: 'Pending', label: 'Pending', icon: 'fa-clock' },
+                          { id: 'IN', label: 'IN (Follow-up)', icon: 'fa-sign-in-alt' },
+                          { id: 'HOld', label: 'Hold', icon: 'fa-pause' },
+                          { id: 'Call not pickup', label: 'Call Missed', icon: 'fa-phone-slash' },
+                          { id: 'Not interesting', label: 'Not Interested', icon: 'fa-thumbs-down' },
+                          { id: 'Fake Leads', label: 'Fake Lead', icon: 'fa-user-secret' }
+                        ].map((s) => (
+                          <button
+                            key={s.id}
+                            disabled={isUpdatingStatus}
+                            onClick={() => handleStatusUpdate(selectedLead.id, s.id)}
+                            style={{
+                              padding: '0.6rem 0.5rem',
+                              borderRadius: '8px',
+                              border: '1.5px solid',
+                              borderColor: selectedLead.status === s.id ? getStatusColor(s.id) : '#e2e8f0',
+                              background: selectedLead.status === s.id ? getStatusColor(s.id) : '#fff',
+                              color: selectedLead.status === s.id ? '#fff' : '#64748b',
+                              fontSize: '0.72rem',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              gap: '0.4rem',
+                              transition: 'all 0.2s',
+                              opacity: isUpdatingStatus ? 0.7 : 1
+                            }}
+                          >
+                            <i className={`fas ${s.icon}`} /> {s.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="admin-modal-footer">
+                  <button className="admin-btn-secondary" onClick={() => setSelectedLead(null)}>
+                    <i className="fas fa-times" /> Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+
         </div>
       </main>
     </div>

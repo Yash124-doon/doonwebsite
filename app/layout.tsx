@@ -36,8 +36,8 @@ const poppins = Poppins({
  * Dynamically uses site data for SEO optimization
  */
 export const metadata: Metadata = {
-  title: 'Best CBSE School in Jabalpur, Madhya Pradesh | Doon International School',
-  description: 'Looking for the best CBSE school in Jabalpur, Madhya Pradesh? Doon International School offers English medium education, day boarding & hostel facilities with modern sports infrastructure. Admissions for 2026-27 are Open.',
+  title: 'Best International CBSE School in Jabalpur | Doon International School',
+  description: 'Doon International School is a leading international CBSE school in Jabalpur, Madhya Pradesh offering quality education, modern facilities, sports and admissions open.',
   alternates: {
     canonical: 'https://www.dooninternationaljabalpur.com',
   },
@@ -73,6 +73,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WV8JC6KH');`}
+        </Script>
+        {/* End Google Tag Manager */}
       </head>
       <body className={`${inter.className} ${playfair.variable} ${poppins.variable}`}>
         {/* Google Tag Manager (noscript) */}

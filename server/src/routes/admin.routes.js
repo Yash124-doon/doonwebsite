@@ -8,6 +8,9 @@ const {
   getDashboardStats,
   getAdminLeads,
   deleteAdmissionLead,
+  getAdmissionEnquiries,
+  deleteAdmissionEnquiry,
+  updateLeadStatus,
 } = require('../controllers/admin.controller');
 
 // ─────────── Public Routes ───────────
@@ -18,6 +21,10 @@ router.post('/login', loginAdmin);
 router.get('/profile', authMiddleware, getAdminProfile);
 router.get('/dashboard', authMiddleware, getDashboardStats);
 router.get('/leads', authMiddleware, getAdminLeads);
+router.patch('/leads/:id/status', authMiddleware, updateLeadStatus);
 router.delete('/leads/:id', authMiddleware, deleteAdmissionLead);
+
+router.get('/admission-enquiries', authMiddleware, getAdmissionEnquiries);
+router.delete('/admission-enquiries/:id', authMiddleware, deleteAdmissionEnquiry);
 
 module.exports = router;

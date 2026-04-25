@@ -110,6 +110,16 @@ export default function AdmissionForm() {
       const result = await response.json();
 
       if (response.ok && result.success) {
+        // GTM dataLayer push for conversion tracking
+        if (typeof window !== 'undefined') {
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({
+            event: "form_submit",
+            form_type: "lead",
+            user_phone: formData.phone.trim()
+          });
+        }
+
         // Redirect to Thank You page for conversion tracking
         router.push('/admission-landing-page/thank-you');
         return;

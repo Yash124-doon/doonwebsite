@@ -7,6 +7,7 @@ const admissionRoutes = require('./routes/admission.routes');
 const adminRoutes = require('./routes/admin.routes');
 const enquiryRoutes = require('./routes/enquiry.routes');
 const blogRoutes = require('./routes/blog.routes');
+const careerRoutes = require('./routes/career.routes');
 
 const app = express();
 
@@ -66,6 +67,7 @@ app.use('/api/admission', admissionRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/enquiry', enquiryRoutes);
 app.use('/api/blogs', blogRoutes);
+app.use('/api/career', careerRoutes);
 
 // --------------- 404 Handler ---------------
 app.use((req, res) => {

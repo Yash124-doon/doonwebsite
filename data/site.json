@@ -3,11 +3,7 @@
   "tagline": "Excellence in Education",
   "navigation": [
     {
-      "name": "HOME",
-      "href": "/"
-    },
-    {
-      "name": "ABOUT",
+      "name": "ABOUT US",
       "href": "/about",
       "dropdown": [
         {
@@ -15,23 +11,48 @@
           "href": "/about"
         },
         {
-          "name": "School Facilities",
-          "href": "/about#facilities"
+          "name": "Chairman's Message",
+          "href": "/about/chairmans-message"
         },
         {
           "name": "Principal's Message",
           "href": "/principal-vision"
+        },
+        {
+          "name": "Our Founder",
+          "href": "/about/founder"
+        },
+        {
+          "name": "Board of Directors",
+          "href": "/about/board-directors"
+        },
+        {
+          "name": "Mission And Vision",
+          "href": "/about/mission-vision"
         }
       ]
     },
     {
-      "name": "MANDATORY DISCLOSURE",
-      "href": "/mandatory-disclosure",
-      "shortName": "MANDATORY DISCLOSURES"
-    },
-    {
       "name": "ADMISSION",
-      "href": "/admission-landing-page"
+      "href": "/admission-landing-page",
+      "dropdown": [
+        {
+          "name": "Admission Overview",
+          "href": "/admission-landing-page"
+        },
+        {
+          "name": "Mandatory Disclosure",
+          "href": "/mandatory-disclosure"
+        },
+        {
+          "name": "School Fee Structure",
+          "href": "/admission-landing-page#fees"
+        },
+        {
+          "name": "Boarding Fee Structure",
+          "href": "/admission-landing-page#boarding-fees"
+        }
+      ]
     },
     {
       "name": "DISCOVER DOON",
@@ -52,14 +73,179 @@
       ]
     },
     {
-      "name": "ENQUIRY",
-      "href": "/enquiry",
-      "external": false
+      "name": "ACADEMICS",
+      "href": "/academics",
+      "dropdown": [
+        {
+          "name": "Why Study at DISJ",
+          "href": "/academics/why-study"
+        },
+        {
+          "name": "Methodology",
+          "href": "/academics/methodology"
+        },
+        {
+          "name": "Curriculum Framework",
+          "href": "/academics/curriculum"
+        },
+        {
+          "name": "Academic Infrastructure",
+          "href": "/academics/infrastructure"
+        }
+      ]
     },
     {
-      "name": "PARENT PORTAL",
-      "href": "https://disjabalpur.schoolpad.in/",
-      "external": true
+      "name": "BEYOND CLASSROOM",
+      "href": "/beyond-classroom",
+      "dropdown": [
+        {
+          "name": "Creative Convergence",
+          "href": "/beyond-classroom/creative-convergence"
+        },
+        {
+          "name": "Sports Infrastructure",
+          "href": "/infrastructure#sports"
+        },
+        {
+          "name": "HMG Centre for Sports Excellence",
+          "href": "/beyond-classroom/hmg-sports"
+        },
+        {
+          "name": "Personality Development",
+          "href": "/beyond-classroom/personality-development"
+        },
+        {
+          "name": "Admission Counseling",
+          "href": "/beyond-classroom/admission-counseling"
+        },
+        {
+          "name": "Behavioral Counseling",
+          "href": "/beyond-classroom/behavioral-counseling"
+        },
+        {
+          "name": "Career Counselling",
+          "href": "/beyond-classroom/career-counselling"
+        },
+        {
+          "name": "School Band",
+          "href": "/beyond-classroom/school-band"
+        },
+        {
+          "name": "Student Council",
+          "href": "/beyond-classroom/student-council"
+        }
+      ]
+    },
+    {
+      "name": "SUPPORT SERVICES",
+      "href": "/support-services",
+      "dropdown": [
+        {
+          "name": "Mess Facility",
+          "href": "/support-services/mess"
+        },
+        {
+          "name": "Bus Facility",
+          "href": "/support-services/bus"
+        },
+        {
+          "name": "Medical Facility",
+          "href": "/support-services/medical"
+        },
+        {
+          "name": "Boarding House",
+          "href": "/support-services/boarding"
+        },
+        {
+          "name": "School ERP",
+          "href": "/support-services/erp"
+        },
+        {
+          "name": "School Facilities",
+          "href": "/about#facilities"
+        }
+      ]
+    },
+    {
+      "name": "ACHIEVEMENTS",
+      "href": "/achievements",
+      "dropdown": [
+        {
+          "name": "Academic Achievements",
+          "href": "/achievements/academic"
+        },
+        {
+          "name": "Sports Achievements",
+          "href": "/achievements/sports"
+        },
+        {
+          "name": "Music & Dance Achievements",
+          "href": "/achievements/music-dance"
+        },
+        {
+          "name": "Art & Craft Achievements",
+          "href": "/achievements/art-craft"
+        },
+        {
+          "name": "Literary Achievements",
+          "href": "/achievements/literary"
+        }
+      ]
+    },
+    {
+      "name": "HAPPENINGS",
+      "href": "/updates",
+      "dropdown": [
+        {
+          "name": "Awards",
+          "href": "/updates/awards"
+        },
+        {
+          "name": "Results",
+          "href": "/updates/results"
+        },
+        {
+          "name": "Investiture Ceremony",
+          "href": "/updates/investiture"
+        },
+        {
+          "name": "Annual Award Ceremony",
+          "href": "/updates/annual-award"
+        },
+        {
+          "name": "National Sports Day",
+          "href": "/updates/sports-day"
+        },
+        {
+          "name": "Annual Function",
+          "href": "/updates/annual-function"
+        },
+        {
+          "name": "National Festivals",
+          "href": "/updates/national-festivals"
+        },
+        {
+          "name": "Special Assemblies / Celebrations",
+          "href": "/updates/special-assemblies"
+        },
+        {
+          "name": "Other News",
+          "href": "/blog"
+        },
+        {
+          "name": "Community Services",
+          "href": "/updates/community-services"
+        },
+        {
+          "name": "Annual Report",
+          "href": "/updates/annual-report"
+        }
+      ]
+    },
+    {
+      "name": "ADMISSION ENQUIRY",
+      "href": "/enquiry",
+      "external": false
     }
   ],
   "contact": {

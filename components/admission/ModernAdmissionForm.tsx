@@ -102,6 +102,17 @@ const ModernAdmissionForm: React.FC = () => {
       });
 
       if (response.ok) {
+        // GTM dataLayer push for conversion tracking
+        if (typeof window !== 'undefined') {
+          (window as any).dataLayer = (window as any).dataLayer || [];
+          (window as any).dataLayer.push({
+            event: "enquiry_form_submit",
+            form_name: "enquiry_form",
+            email: formData.email,
+            phone: formData.mobileNumber
+          });
+        }
+
         setIsSuccess(true);
         setFormData({
           childFirstName: '',

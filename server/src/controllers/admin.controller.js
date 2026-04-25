@@ -309,6 +309,107 @@ const deleteAdmissionLead = async (req, res) => {
   }
 };
 
+/**
+ * Get all detailed admission enquiries
+ * GET /api/admin/admission-enquiries
+ */
+const getAdmissionEnquiries = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 20;
+    const offset = (page - 1) * limit;
+    const search = req.query.search || '';
+
+    let whereClause = '1=1';
+    const params = [];
+
+    if (search) {
+      whereClause += ' AND (childFirstName LIKE ? OR fatherFirstName LIKE ? OR mobileNumber LIKE ? OR email LIKE ?)';
+      params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
+    }
+
+    // Get total count
+    const [countResult] = await pool.execute(
+      `SELECT COUNT(*) as total FROM admission_enquiry WHERE ${whereClause}`,
+      params
+    );
+
+    // Get paginated results
+    const [rows] = await pool.execute(
+      `SELECT * FROM admission_enquiry WHERE ${whereClause} ORDER BY created_at DESC LIMIT ${limit} OFFSET ${offset}`,
+      params
+    );
+
+    return res.status(200).json({
+      success: true,
+      data: rows,
+      pagination: {
+        total: countResult[0].total,
+        page,
+        limit,
+        totalPages: Math.ceil(countResult[0].total / limit),
+      },
+    });
+  } catch (error) {
+    console.error('Error fetching admission enquiries:', error.message);
+    return res.status(500).json({ success: false, message: 'Internal server error.' });
+  }
+};
+
+/**
+ * Delete a detailed admission enquiry
+ * DELETE /api/admin/admission-enquiries/:id
+ */
+const deleteAdmissionEnquiry = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const [result] = await pool.execute(
+      'DELETE FROM admission_enquiry WHERE id = ?',
+      [id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Enquiry not found.' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Enquiry deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting enquiry:', error.message);
+    return res.status(500).json({ success: false, message: 'Internal server error.' });
+  }
+};
+
+/**
+ * Update the status of a simple admission lead
+ * PATCH /api/admin/leads/:id/status
+ */
+const updateLeadStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const allowedStatuses = ['Pending', 'IN', 'Not interesting', 'HOld', 'Call not pickup', 'Fake Leads'];
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({ success: false, message: 'Invalid status value.' });
+    }
+
+    const [result] = await pool.execute(
+      'UPDATE admission_leads SET status = ? WHERE id = ?',
+      [status, id]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ success: false, message: 'Lead not found.' });
+    }
+
+    return res.status(200).json({ success: true, message: 'Status updated successfully.' });
+  } catch (error) {
+    console.error('Error updating lead status:', error.message);
+    return res.status(500).json({ success: false, message: 'Internal server error.' });
+  }
+};
+
 module.exports = {
   registerAdmin,
   loginAdmin,
@@ -316,4 +417,7 @@ module.exports = {
   getDashboardStats,
   getAdminLeads,
   deleteAdmissionLead,
+  getAdmissionEnquiries,
+  deleteAdmissionEnquiry,
+  updateLeadStatus
 };

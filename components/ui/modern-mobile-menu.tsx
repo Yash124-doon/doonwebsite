@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Home, Building, FileText, Users, ImageIcon, Newspaper, Phone, ChevronDown, ChevronRight } from 'lucide-react';
+import { X, Home, Building, FileText, Users, ImageIcon, Newspaper, Phone, ChevronDown, ChevronRight, BookOpen, Activity, Heart, Trophy, Calendar } from 'lucide-react';
 import siteData from '../../data/site.json';
 
 interface ModernMobileMenuProps {
@@ -62,65 +62,64 @@ const getNavigationItems = (): NavigationItem[] => {
   });
 
   siteData.navigation.forEach((navItem) => {
-    if (navItem.name !== 'HOME' && navItem.name !== 'ENQUIRY') {
+    // Filter out HOME and the ADMISSION ENQUIRY button (href: /enquiry) to avoid duplication
+    if (navItem.name !== 'HOME' && !(navItem.name === 'ADMISSION ENQUIRY' && navItem.href === '/enquiry')) {
       let displayName, icon, color, description;
 
       switch (navItem.name) {
-        case 'ABOUT':
-          displayName = 'About';
+        case 'ABOUT US':
+          displayName = 'About Us';
           icon = Building;
           color = '#1f4f8b';
           description = 'Learn more about our school';
           break;
-        case 'MANDATORY DISCLOSURE':
-        case 'MANDATORY DISCLOSURES':
-          displayName = 'Mandatory Disclosure';
-          icon = FileText;
-          color = '#6b7280';
-          description = 'Official school disclosure information';
-          break;
         case 'ADMISSION':
-        case 'ADMISSIONS':
-          displayName = 'Admissions';
+          displayName = 'Admission';
           icon = Users;
           color = '#3b82f6';
           description = 'Join our community';
           break;
-        case 'GALLERY':
-          displayName = 'Gallery';
-          icon = ImageIcon;
-          color = '#f59e0b';
-          description = 'View our photo gallery';
-          break;
-        case 'UPDATES':
-          displayName = 'Updates';
-          icon = Newspaper;
-          color = '#8b5cf6';
-          description = 'Latest news and updates';
-          break;
-        case 'CONTACT':
-          displayName = 'Contact';
-          icon = Phone;
-          color = '#60a5fa';
-          description = 'Get in touch with us';
-          break;
         case 'DISCOVER DOON':
           displayName = 'Discover Doon';
-          icon = Building;
-          color = '#10b981';
+          icon = ImageIcon;
+          color = '#f59e0b';
           description = 'Explore our facilities';
           break;
-        case 'PARENT PORTAL':
-          displayName = 'Parent Portal';
-          icon = Users;
+        case 'ACADEMICS':
+          displayName = 'Academics';
+          icon = BookOpen;
           color = '#1f4f8b';
-          description = 'Access parent resources';
+          description = 'Our curriculum and methodology';
+          break;
+        case 'BEYOND CLASSROOM':
+          displayName = 'Beyond Classroom';
+          icon = Activity;
+          color = '#10b981';
+          description = 'Sports, arts, and personal growth';
+          break;
+        case 'SUPPORT SERVICES':
+          displayName = 'Support Services';
+          icon = Heart;
+          color = '#3b82f6';
+          description = 'Facilities for student well-being';
+          break;
+        case 'ACHIEVEMENTS':
+          displayName = 'Achievements';
+          icon = Trophy;
+          color = '#f59e0b';
+          description = 'Celebrating our success';
+          break;
+        case 'HAPPENINGS':
+          displayName = 'Happenings';
+          icon = Calendar;
+          color = '#8b5cf6';
+          description = 'Latest events and news';
           break;
         default:
           displayName = navItem.name;
           icon = Building;
           color = '#1f4f8b';
-          description = `Visit our ${displayName.toLowerCase()}`;
+          description = `Explore our ${displayName.toLowerCase()}`;
       }
 
       items.push({
@@ -226,13 +225,11 @@ export const ModernMobileMenu: React.FC<ModernMobileMenuProps> = ({ isOpen, onCl
                 className="mb-4"
               >
                 <Link
-                  href={siteData.navigation.find(item => item.name === 'ENQUIRY')?.href || '/enquiry'}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={siteData.navigation.find(item => item.name === 'ADMISSION ENQUIRY' && item.href === '/enquiry')?.href || '/enquiry'}
                   onClick={onClose}
-                  className="group block w-full bg-[#F2B33D] text-[#002B6B] px-6 py-3 rounded-xl font-medium hover:bg-[#F2B33D]/90 transition-colors text-center shadow-sm hover:shadow-md"
+                  className="group block w-full bg-[#F2B33D] text-[#002B6B] px-6 py-3 rounded-xl font-bold hover:bg-[#F2B33D]/90 transition-all duration-300 text-center shadow-lg hover:shadow-xl active:scale-95"
                 >
-                  Enquiry
+                  Admission Enquiry
                 </Link>
               </motion.div>
 

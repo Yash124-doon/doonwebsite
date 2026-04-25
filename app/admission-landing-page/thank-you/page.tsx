@@ -16,15 +16,6 @@ import './thank-you.css';
 export default function ThankYouPage() {
   // Fire conversion tracking events on page load
   useEffect(() => {
-    // Google Ads Conversion Tracking (gtag) — Doon Submit lead form
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'conversion', {
-        send_to: 'AW-17973749388/3piuCI7HgoIcEIzNxvpC',
-        value: 1.0,
-        currency: 'INR',
-      });
-    }
-
     // Meta Pixel Lead Event
     if (typeof window !== 'undefined' && (window as any).fbq) {
       (window as any).fbq('track', 'Lead', {
@@ -104,7 +95,7 @@ export default function ThankYouPage() {
           <span className="thankyou-divider">or</span>
           <a href="tel:+919201591892" className="thankyou-phone secondary">
             <i className="fas fa-phone" />
-            +91 92015 91892
+            +91 92015 91893
           </a>
         </div>
 

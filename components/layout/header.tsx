@@ -25,6 +25,20 @@ import siteData from '../../data/site.json';
 import { ChevronDown, Facebook, Instagram, Twitter, Phone, Mail } from 'lucide-react';
 
 /**
+ * Interface for Navigation Items defined in site.json
+ */
+interface NavigationItem {
+  name: string;
+  shortName?: string;
+  href: string;
+  dropdown?: {
+    name: string;
+    href: string;
+  }[];
+  external?: boolean;
+}
+
+/**
  * Main Header Component
  *
  * Features:
@@ -166,64 +180,87 @@ const Header: React.FC = (): JSX.Element => {
             ? `bg-transparent shadow-none`
             : `shadow-lg border-b bg-white border-gray-300`
           }`}>
-          <div className="container px-0.5 pr-2 py-0 md:px-4 md:py-0 lg:py-0 min-h-[5rem] md:min-h-[5rem] lg:min-h-[5.5rem] grid grid-cols-[auto_1fr_auto] items-center relative gap-4 lg:gap-8">
-            {/* LEFT SIDE: LOGO */}
+          <div className="w-full px-2 md:px-6 lg:px-8 py-0 md:py-0 lg:py-0 min-h-[5rem] md:min-h-[5rem] lg:min-h-[5.5rem] flex items-center justify-between relative gap-2 xl:gap-8">
+            {/* LEFT SIDE: LOGO & SCHOOL NAME */}
             <div className="flex items-center flex-shrink-0">
-              <img
-                src="/assets/doonlogo.png"
-                alt="Doon International School Logo"
-                className="w-[72px] h-[72px] md:w-[72px] md:h-[72px] lg:w-[72px] lg:h-[72px] object-contain"
-                style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.5))' }}
-              />
-            </div>
-
-            {/* CENTER: SCHOOL NAME - On mobile in smaller font */}
-            <div className="flex justify-center items-center col-start-2">
-              <Link
-                href="/"
-                className={`block md:hidden xl:block ${(pathname === '/' && !isScrolled) || isMobileMenuOpen ? 'text-white' : 'text-black'} ${pathname === '/' && !isScrolled && !isMobileMenuOpen ? 'md:opacity-100 opacity-0' : 'opacity-100'} font-heading font-bold text-xs sm:text-sm xl:text-base hover:text-[#FFD700] transition-all duration-300`}
-              >
-                DOON INTERNATIONAL SCHOOL, JABALPUR
+              <Link href="/" className="flex items-center gap-2 md:gap-3 group">
+                <img
+                  src="/assets/doonlogo.png"
+                  alt="Doon International School Logo"
+                  className="w-[60px] h-[60px] md:w-[70px] md:h-[70px] lg:w-[75px] lg:h-[75px] object-contain"
+                  style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }}
+                />
+                <div className={`flex flex-col ${(pathname === '/' && !isScrolled) || isMobileMenuOpen ? 'text-white' : 'text-[#002B6B]'} leading-[1] font-poppins tracking-tight text-[11px] md:text-[12px] lg:text-[14px] xl:text-[16px] transition-colors duration-300`}>
+                  <span className="drop-shadow-sm" style={{ fontWeight: 900 }}>DOON</span>
+                  <span className="drop-shadow-sm" style={{ fontWeight: 900 }}>INTERNATIONAL</span>
+                  <span className="drop-shadow-sm" style={{ fontWeight: 900 }}>SCHOOL</span>
+                  <span className="drop-shadow-sm" style={{ fontWeight: 900 }}>JABALPUR</span>
+                </div>
               </Link>
             </div>
 
             {/* RIGHT SIDE: NAV - Hidden on mobile, tablet optimized */}
-            <div className="hidden md:flex items-center justify-end gap-2 md:gap-2 lg:gap-4 col-start-3">
-              {siteData.navigation.map((item) => (
+            <div className="hidden md:flex items-center gap-1 xl:gap-4 ml-auto">
+              {(siteData.navigation as NavigationItem[]).map((item) => (
                 <div key={item.name} className="relative group flex items-center flex-shrink-0">
-                  {item.name === "ENQUIRY" ? (
-                    <Link href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined} className="bg-[#F2B33D] text-[#002B6B] px-4 md:px-5 lg:px-6 py-1.5 md:py-2 lg:py-2 rounded-full font-medium hover:bg-[#F2B33D]/90 transition-colors flex-shrink-0 whitespace-nowrap text-sm lg:text-base">
-                      Enquiry
+                  {item.name === "ADMISSION ENQUIRY" ? (
+                    <Link
+                      href={item.href}
+                      className="bg-[#F2B33D] text-[#002B6B] px-5 lg:px-7 py-2 lg:py-3 rounded-full font-black hover:bg-[#F2B33D]/90 transition-all duration-300 flex-shrink-0 whitespace-nowrap text-xs xl:text-sm uppercase tracking-wider shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
+                    >
+                      Admission Enquiry
                     </Link>
                   ) : item.name === "PARENT PORTAL" ? (
-                    <Link href={item.href} className="bg-[#002B6B] text-white px-4 md:px-5 lg:px-6 py-1.5 md:py-2 lg:py-2 rounded-full font-medium hover:bg-[#002B6B]/90 transition-colors flex-shrink-0 whitespace-nowrap text-sm lg:text-base">
-                      Parent Portal
-                    </Link>
+                    null // Parent portal commented out/removed
                   ) : (
-                    <>
+                    <div className="relative group">
                       <Link
                         href={item.href}
-                        className={`${pathname === '/' && !isScrolled ? 'text-white' : 'text-black'} hover:text-[#FFD700] transition-colors font-medium flex items-center space-x-1 leading-tight text-sm lg:text-base`}
+                        className={`${(pathname === '/' && !isScrolled)
+                          ? 'text-white hover:text-[#FFD700]'
+                          : pathname.startsWith(item.href) && item.href !== '/'
+                            ? 'text-[#002B6B]'
+                            : 'text-black hover:text-[#002B6B]'
+                          } transition-colors font-semibold flex items-center space-x-1 leading-tight text-[11px] lg:text-[13px] xl:text-base relative py-2`}
                       >
                         <span className="whitespace-nowrap">{item.shortName || item.name}</span>
                         {item.dropdown && <ChevronDown className="w-3 h-3 lg:w-4 lg:h-4 flex-shrink-0 mt-0.5" />}
+
+                        {/* Active Indicator Underline */}
+                        {pathname.startsWith(item.href) && item.href !== '/' && (
+                          <motion.div
+                            layoutId="nav-underline"
+                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-600"
+                            initial={false}
+                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          />
+                        )}
                       </Link>
+
+                      {/* Dropdown Menu */}
                       {item.dropdown && (
-                        <div className="absolute top-full left-0 mt-1 bg-white/70 backdrop-blur-md border border-gray-300 py-2 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 min-w-[180px] lg:min-w-[200px] z-50">
-                          {item.dropdown.map((submenu, index) => (
-                            <div key={submenu.name}>
-                              <Link
-                                href={submenu.href}
-                                className="block px-3 lg:px-4 py-2 text-black hover:bg-gray-100 hover:text-[#FFD700] transition-colors text-sm lg:text-base"
-                              >
-                                {submenu.name}
-                              </Link>
-                              {index < item.dropdown.length - 1 && <div className="border-b border-gray-300 mx-2"></div>}
-                            </div>
-                          ))}
+                        <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                          <div className="bg-white border border-gray-100 py-3 shadow-xl rounded-xl min-w-[220px] lg:min-w-[260px] overflow-hidden">
+                            {item.dropdown.map((submenu, index) => (
+                              <div key={submenu.name}>
+                                <Link
+                                  href={submenu.href}
+                                  className={`block px-5 py-2.5 text-sm lg:text-base transition-colors ${pathname === submenu.href
+                                    ? 'text-red-600 bg-red-50 font-semibold'
+                                    : 'text-gray-700 hover:bg-gray-50 hover:text-[#002B6B]'
+                                    }`}
+                                >
+                                  {submenu.name}
+                                </Link>
+                                {index < item.dropdown!.length - 1 && (
+                                  <div className="border-b border-gray-50 mx-4 my-1"></div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       )}
-                    </>
+                    </div>
                   )}
                 </div>
               ))}
