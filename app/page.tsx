@@ -296,7 +296,6 @@ export default function Home(): JSX.Element {
       <Hero
         title="Doon International School"
         subtitle={siteData.tagline}
-        // videoSrc="https://crm-generalize.dentalguru.software/Assets/DOON%20CHANGES.mp4"
         videoSrc="/assets/gallery/videos/DOON%20CHANGES.mp4"
       >
         <Link href="/about">
