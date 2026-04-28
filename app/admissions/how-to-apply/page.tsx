@@ -111,7 +111,7 @@ export default function HowToApplyPage() {
                 You can start the process today by filling out our online enquiry form.
                 Our admission office will contact you within 24 working hours.
               </p>
-              <Link href="/admissions/enquiry" className="bg-primary text-white font-black px-12 py-4 rounded-full shadow-lg hover:shadow-xl transition-all">
+              <Link href="/enquiry" className="bg-primary text-white font-black px-12 py-4 rounded-full shadow-lg hover:shadow-xl transition-all">
                 Apply Online Now
               </Link>
             </motion.div>

@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog | Doon International School Jabalpur - News & Updates',
-  description: 'Read the latest blog posts, news, events, and educational insights from Doon International School, Jabalpur. Stay informed about school activities and achievements.',
+  title: 'School News & Updates in Jabalpur',
+  description: 'Stay updated with school news and updates in Jabalpur. Latest announcements, achievements, and important student activities.',
+  keywords: ['school news and updates in jabalpur', 'latest announcements school jabalpur', 'important student activities', 'doon school blog'],
   alternates: {
-    canonical: 'https://www.dooninternationaljabalpur.com/blog',
+    canonical: 'https://www.dooninternationaljabalpur.com/blog/',
   },
 };
 

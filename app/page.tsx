@@ -52,8 +52,243 @@ export default function Home(): JSX.Element {
   //   setShowPopup(false);
   // };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "School",
+    "name": "Doon International School, Jabalpur",
+    "alternateName": "DISJ",
+    "url": "https://www.dooninternationaljabalpur.com",
+    "logo": "https://www.dooninternationaljabalpur.com/assets/doonlogo.png",
+    "image": "https://www.dooninternationaljabalpur.com/assets/main-entrance.webp",
+    "description": "Doon International School, Jabalpur is a premier co-educational CBSE affiliated day and residential school located in Jabalpur, Madhya Pradesh. Established in 2004 under the aegis of Doon International School, Dehradun, it offers holistic education from Pre-Primary to Class XII with world-class infrastructure, sports facilities, boarding house, and extracurricular programs.",
+    "foundingDate": "2004",
+    "telephone": "+91-9201591900",
+    "email": "info@dooninternationaljabalpur.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nagpur Road, Opposite Tata Motors, Manegaon",
+      "addressLocality": "Jabalpur",
+      "addressRegion": "Madhya Pradesh",
+      "postalCode": "482051",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 23.1815,
+      "longitude": 79.9864
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday",
+          "Thursday", "Friday", "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "15:30"
+      }
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "CBSE Affiliation",
+      "credentialCategory": "Affiliation",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "Central Board of Secondary Education",
+        "alternateName": "CBSE",
+        "url": "https://www.cbse.gov.in"
+      },
+      "identifier": "1031485"
+    },
+    "employee": {
+      "@type": "Person",
+      "name": "Dr. Rajiv Kumar Singh",
+      "jobTitle": "Principal"
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Smart Classrooms", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Boarding House / Hostel Facility", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Sports Infrastructure", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Computer Labs", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Library", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Science Park & Laboratories", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Mess / Canteen Facility", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Transportation / Bus Facility", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Medical Facility", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Auditorium", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Robotics & STEM Lab", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Shooting Range (Gun for Glory / Gagan Narang)", "value": true }
+    ],
+    "sameAs": [
+      "https://www.facebook.com/share/1HHxdiv1Sp/",
+      "https://www.instagram.com/doon_international_schooljbp",
+      "https://www.linkedin.com/company/doon-international-school-jabalpur",
+      "https://x.com/DoonIntlJbp"
+    ]
+  };
+
+  const jsonLdOrg = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Doon International School, Jabalpur",
+    "alternateName": "DISJ",
+    "legalName": "Suman Devi Shikshan Sansthan",
+    "url": "https://www.dooninternationaljabalpur.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.dooninternationaljabalpur.com/assets/doonlogo.png",
+      "width": 300,
+      "height": 100
+    },
+    "foundingDate": "2004",
+    "description": "Doon International School, Jabalpur is a CBSE affiliated co-educational residential and day school providing world-class education under the aegis of Doon International School, Dehradun since 2004.",
+    "telephone": "+91-9201591900",
+    "email": "info@dooninternationaljabalpur.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nagpur Road, Opposite Tata Motors, Manegaon",
+      "addressLocality": "Jabalpur",
+      "addressRegion": "Madhya Pradesh",
+      "postalCode": "482051",
+      "addressCountry": "IN"
+    },
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-9201591900",
+        "contactType": "admissions",
+        "availableLanguage": ["English", "Hindi"],
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday", "Tuesday", "Wednesday",
+            "Thursday", "Friday", "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "15:30"
+        }
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+91-9201591893",
+        "contactType": "customer support",
+        "availableLanguage": ["English", "Hindi"]
+      }
+    ],
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Doon International School, Dehradun",
+      "foundingDate": "1993"
+    },
+    "sameAs": [
+      "https://www.facebook.com/share/1HHxdiv1Sp/",
+      "https://www.instagram.com/doon_international_schooljbp",
+      "https://www.linkedin.com/company/doon-international-school-jabalpur",
+      "https://x.com/DoonIntlJbp"
+    ]
+  };
+
+  const jsonLdWebsite = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Doon International School, Jabalpur",
+    "alternateName": "Best International CBSE School in Jabalpur",
+    "url": "https://www.dooninternationaljabalpur.com",
+    "description": "Official website of Doon International School, Jabalpur — Best CBSE School in Jabalpur, Madhya Pradesh offering day and residential education with world-class infrastructure.",
+    "inLanguage": "en-IN",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Doon International School, Jabalpur",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.dooninternationaljabalpur.com/assets/doonlogo.png"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.dooninternationaljabalpur.com/?s={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const jsonLdLocalBusiness = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "EducationalOrganization"],
+    "name": "Doon International School, Jabalpur",
+    "alternateName": "DISJ",
+    "description": "Best CBSE School in Jabalpur, Madhya Pradesh. A premier co-educational day and residential senior secondary school offering world-class education, boarding house, sports facilities, STEM labs, and holistic development programs since 2004.",
+    "url": "https://www.dooninternationaljabalpur.com",
+    "logo": "https://www.dooninternationaljabalpur.com/assets/doonlogo.png",
+    "image": [
+      "https://www.dooninternationaljabalpur.com/assets/main-entrance.webp",
+      "https://www.dooninternationaljabalpur.com/assets/main-hall.webp",
+      "https://www.dooninternationaljabalpur.com/assets/facilities/classroom.webp"
+    ],
+    "telephone": "+91-9201591900",
+    "email": "info@dooninternationaljabalpur.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nagpur Road, Opposite Tata Motors, Manegaon",
+      "addressLocality": "Jabalpur",
+      "addressRegion": "Madhya Pradesh",
+      "postalCode": "482051",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 23.1815,
+      "longitude": 79.9864
+    },
+    "hasMap": "https://maps.google.com/?q=Doon+International+School+Jabalpur+Manegaon",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday",
+          "Thursday", "Friday", "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "15:30"
+      }
+    ],
+    "priceRange": "₹₹",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Cash, Bank Transfer, Online Payment",
+    "areaServed": [
+      "Jabalpur",
+      "Madhya Pradesh",
+      "India"
+    ],
+    "keywords": "Best CBSE School Jabalpur, Top School Jabalpur, Boarding School Jabalpur, Residential School Jabalpur, CBSE School Madhya Pradesh, Doon International School",
+    "sameAs": [
+      "https://www.facebook.com/share/1HHxdiv1Sp/",
+      "https://www.instagram.com/doon_international_schooljbp",
+      "https://www.linkedin.com/company/doon-international-school-jabalpur",
+      "https://x.com/DoonIntlJbp"
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdLocalBusiness) }}
+      />
       {/* <PopupModal isOpen={showPopup} onClose={handleClosePopup} /> */}
 
       {/* Hero Section - Video Background */}
