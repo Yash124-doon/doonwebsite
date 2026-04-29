@@ -9,6 +9,7 @@ import { Inter, Playfair_Display, Poppins } from 'next/font/google';
 import Script from 'next/script';
 import './globals.css';
 import LayoutContent from '@/components/layout/LayoutContent';
+import NextTopLoader from 'nextjs-toploader';
 
 // Configure Inter font with multiple weights for consistent typography
 const inter = Inter({
@@ -94,6 +95,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+        <NextTopLoader
+          color="#FFD700"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #FFD700,0 0 5px #FFD700"
+        />
         <LayoutContent>{children}</LayoutContent>
       </body>
     </html>

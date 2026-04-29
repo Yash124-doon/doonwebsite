@@ -86,7 +86,15 @@ interface CareerApplication {
   created_at: string;
 }
 
-type ActiveTab = 'dashboard' | 'leads' | 'blogs' | 'careerJobs' | 'careerApps' | 'admissionEnquiries';
+interface GalleryItem {
+  id: number;
+  title: string;
+  category: string;
+  image_url: string;
+  created_at: string;
+}
+
+type ActiveTab = 'dashboard' | 'leads' | 'blogs' | 'careerJobs' | 'careerApps' | 'admissionEnquiries' | 'gallery';
 
 export default function AdminDashboard() {
   const router = useRouter();
@@ -145,6 +153,16 @@ export default function AdminDashboard() {
   const [admissionSearch, setAdmissionSearch] = useState('');
   const [admissionPagination, setAdmissionPagination] = useState({ page: 1, limit: 20, total: 0, totalPages: 0 });
   const [selectedEnquiry, setSelectedEnquiry] = useState<AdmissionEnquiry | null>(null);
+
+  // Gallery state
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
+  const [isGalleryLoading, setIsGalleryLoading] = useState(false);
+  const [isUploadingGallery, setIsUploadingGallery] = useState(false);
+  const [showGalleryForm, setShowGalleryForm] = useState(false);
+  const [galleryFormData, setGalleryFormData] = useState({ title: '', category: 'Classroom Excellence' });
+  const [galleryImage, setGalleryImage] = useState<File | null>(null);
+  const [galleryImagePreview, setGalleryImagePreview] = useState<string | null>(null);
+  const [galleryMsg, setGalleryMsg] = useState({ type: '', text: '' });
 
   // Simple Leads Details state
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
@@ -288,6 +306,20 @@ export default function AdminDashboard() {
     }
   }, [admissionSearch, admissionPagination.limit]);
 
+  // Fetch Gallery Items
+  const fetchGallery = useCallback(async () => {
+    setIsGalleryLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/api/gallery`);
+      const data = await res.json();
+      if (data.success) setGalleryItems(data.data);
+    } catch (err) {
+      console.error('Gallery fetch error:', err);
+    } finally {
+      setIsGalleryLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     const token = localStorage.getItem('admin_token');
     if (!token) return;
@@ -297,7 +329,8 @@ export default function AdminDashboard() {
     else if (activeTab === 'careerJobs') fetchCareerJobs();
     else if (activeTab === 'careerApps') fetchCareerApps();
     else if (activeTab === 'admissionEnquiries') fetchAdmissionEnquiries();
-  }, [activeTab, fetchDashboard, fetchLeads, fetchBlogs, fetchCareerJobs, fetchCareerApps, fetchAdmissionEnquiries]);
+    else if (activeTab === 'gallery') fetchGallery();
+  }, [activeTab, fetchDashboard, fetchLeads, fetchBlogs, fetchCareerJobs, fetchCareerApps, fetchAdmissionEnquiries, fetchGallery]);
 
   // Delete lead
   const handleDelete = async (id: number) => {
@@ -527,6 +560,7 @@ export default function AdminDashboard() {
       case 'careerJobs': return showJobForm ? (editingJob ? 'Edit Career Opening' : 'Add New Opening') : 'Career Openings';
       case 'careerApps': return 'Career Inquiries';
       case 'admissionEnquiries': return 'Admission Enquiries (Detailed)';
+      case 'gallery': return showGalleryForm ? 'Upload New Image' : 'Gallery Management';
     }
   };
 
@@ -538,6 +572,7 @@ export default function AdminDashboard() {
       case 'careerJobs': return showJobForm ? 'Define the job details below' : 'Manage your school vacancies';
       case 'careerApps': return 'Track and respond to career queries';
       case 'admissionEnquiries': return 'View and manage detailed registration forms';
+      case 'gallery': return showGalleryForm ? 'Upload an image to the public gallery' : 'Manage your school visual gallery';
     }
   };
 
@@ -619,6 +654,69 @@ export default function AdminDashboard() {
     }
   };
 
+  // ─────────── Gallery Handlers ───────────
+  const handleGalleryImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setGalleryImage(file);
+      setGalleryImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleGallerySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setGalleryMsg({ type: '', text: '' });
+    if (!galleryImage) {
+      setGalleryMsg({ type: 'error', text: 'Please select an image' });
+      return;
+    }
+    setIsUploadingGallery(true);
+    try {
+      const formData = new FormData();
+      formData.append('title', galleryFormData.title);
+      formData.append('category', galleryFormData.category);
+      formData.append('image', galleryImage);
+
+      const res = await fetch(`${API_URL}/api/gallery/admin/create`, {
+        method: 'POST',
+        headers: getAuthHeader(),
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.success) {
+        setGalleryMsg({ type: 'success', text: 'Image uploaded successfully' });
+        setTimeout(() => {
+          setShowGalleryForm(false);
+          setGalleryFormData({ title: '', category: 'Classroom Excellence' });
+          setGalleryImage(null);
+          setGalleryImagePreview(null);
+          setIsUploadingGallery(false);
+          fetchGallery();
+        }, 1200);
+      } else {
+        setGalleryMsg({ type: 'error', text: data.message || 'Upload failed' });
+        setIsUploadingGallery(false);
+      }
+    } catch (err) {
+      console.error('Gallery upload error:', err);
+      setGalleryMsg({ type: 'error', text: 'Server error. Please try again.' });
+      setIsUploadingGallery(false);
+    }
+  };
+
+  const handleDeleteGallery = async (id: number) => {
+    if (!confirm('Are you sure you want to delete this gallery image?')) return;
+    try {
+      const res = await fetch(`${API_URL}/api/gallery/admin/${id}`, {
+        method: 'DELETE',
+        headers: getHeaders(),
+      });
+      if (res.ok) fetchGallery();
+    } catch (err) {
+      console.error('Delete gallery error:', err);
+    }
+  };
+
   return (
     <div className="admin-layout">
       {/* Mobile overlay */}
@@ -686,6 +784,13 @@ export default function AdminDashboard() {
           >
             <i className="fas fa-file-alt" />
             Career Queries
+          </button>
+          <button
+            className={`admin-nav-item ${activeTab === 'gallery' ? 'active' : ''}`}
+            onClick={() => { setActiveTab('gallery'); setSidebarOpen(false); setShowBlogForm(false); setShowJobForm(false); setShowGalleryForm(false); }}
+          >
+            <i className="fas fa-images" />
+            Gallery
           </button>
 
           <div className="admin-nav-label">Quick Links</div>
@@ -1676,6 +1781,155 @@ export default function AdminDashboard() {
                   </div>
                 )}
               </div>
+            </>
+          ) : activeTab === 'gallery' ? (
+            /* ─────────── GALLERY TAB ─────────── */
+            <>
+              {showGalleryForm ? (
+                <div className="admin-form-card">
+                  <div className="admin-table-header">
+                    <h2><i className="fas fa-upload" style={{ marginRight: '8px' }} /> Upload Gallery Image</h2>
+                    <button className="admin-btn-secondary" onClick={() => setShowGalleryForm(false)}>
+                      <i className="fas fa-arrow-left" /> Back
+                    </button>
+                  </div>
+                  
+                  {galleryMsg.text && (
+                    <div className={`admin-msg ${galleryMsg.type}`}>
+                      <i className={`fas fa-${galleryMsg.type === 'error' ? 'exclamation-circle' : 'check-circle'}`} />
+                      {galleryMsg.text}
+                    </div>
+                  )}
+
+                  <form className="admin-form" onSubmit={handleGallerySubmit}>
+                    <div className="admin-form-group">
+                      <label>Title</label>
+                      <input
+                        type="text"
+                        required
+                        value={galleryFormData.title}
+                        onChange={(e) => setGalleryFormData({ ...galleryFormData, title: e.target.value })}
+                        placeholder="e.g., Annual Sports Day 2024"
+                      />
+                    </div>
+                    
+                    <div className="admin-form-group">
+                      <label>Category</label>
+                      <select
+                        required
+                        value={galleryFormData.category}
+                        onChange={(e) => setGalleryFormData({ ...galleryFormData, category: e.target.value })}
+                      >
+                        <option value="Classroom Excellence">Classroom Excellence</option>
+                        <option value="State-of-the-Art Facilities">State-of-the-Art Facilities</option>
+                        <option value="Extracurricular Activities">Extracurricular Activities</option>
+                        <option value="Campus & Infrastructure">Campus & Infrastructure</option>
+                        <option value="Events & Celebrations">Events & Celebrations</option>
+                        <option value="Student Life">Student Life</option>
+                      </select>
+                    </div>
+
+                    <div className="admin-form-group">
+                      <label>Image (Required)</label>
+                      <div className="admin-file-upload">
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleGalleryImageChange}
+                          id="gallery-image"
+                        />
+                        <label htmlFor="gallery-image" className="admin-btn-secondary">
+                          <i className="fas fa-image" /> Choose Image
+                        </label>
+                        {galleryImagePreview && (
+                          <div className="admin-image-preview">
+                            <img src={galleryImagePreview} alt="Preview" />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="admin-form-actions">
+                      <button type="submit" className="admin-btn-primary" disabled={isUploadingGallery || galleryMsg.type === 'success'}>
+                        {isUploadingGallery ? (
+                          <><i className="fas fa-spinner fa-spin" style={{ marginRight: '8px' }} /> Uploading...</>
+                        ) : (
+                          <><i className="fas fa-save" style={{ marginRight: '8px' }} /> Upload Image</>
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              ) : (
+                <>
+                  <div className="admin-table-header" style={{ marginBottom: '1.5rem' }}>
+                    <div className="admin-search-bar">
+                      <i className="fas fa-search" />
+                      <input
+                        type="text"
+                        placeholder="Search images..."
+                        // You can implement search if needed later
+                      />
+                    </div>
+                    <button className="admin-btn-primary" onClick={() => setShowGalleryForm(true)}>
+                      <i className="fas fa-plus" /> Upload Image
+                    </button>
+                  </div>
+
+                  {isGalleryLoading ? (
+                    <div className="admin-loading"><div className="admin-loading-spinner" /></div>
+                  ) : (
+                    <div className="admin-table-card">
+                      <div className="admin-table-wrapper">
+                        <table className="admin-table">
+                          <thead>
+                            <tr>
+                              <th>Preview</th>
+                              <th>Title</th>
+                              <th>Category</th>
+                              <th>Date Added</th>
+                              <th>Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {galleryItems.length > 0 ? (
+                              galleryItems.map((item) => (
+                                <tr key={item.id}>
+                                  <td>
+                                    <img 
+                                      src={item.image_url.startsWith('http') ? item.image_url : `${API_URL}${item.image_url}`} 
+                                      alt={item.title} 
+                                      style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '4px' }}
+                                    />
+                                  </td>
+                                  <td><strong>{item.title}</strong></td>
+                                  <td>
+                                    <span className="admin-status-badge" style={{ background: '#e0e7ff', color: '#3730a3' }}>
+                                      {item.category}
+                                    </span>
+                                  </td>
+                                  <td className="date-cell">{formatDate(item.created_at)}</td>
+                                  <td>
+                                    <div className="admin-flex-actions">
+                                      <button className="action-btn delete" onClick={() => handleDeleteGallery(item.id)}>
+                                        <i className="fas fa-trash-alt" />
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))
+                            ) : (
+                              <tr>
+                                <td colSpan={5} className="text-center py-10 text-gray-400">No images found in gallery.</td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
             </>
           ) : null}
 

@@ -46,11 +46,13 @@
         },
         {
           "name": "School Fee Structure",
-          "href": "/admission-landing-page#fees"
+          "href": "/assets/documents/Day School fee structure 25-26.pdf",
+          "download": true
         },
         {
-          "name": "Boarding Fee Structure",
-          "href": "/admission-landing-page#boarding-fees"
+          "name": "Day Boarding Fee Structure",
+          "href": "/assets/documents/Day boarding fee structure 25-26.pdf",
+          "download": true
         }
       ]
     },
@@ -91,6 +93,10 @@
         {
           "name": "Academic Infrastructure",
           "href": "/academics/infrastructure"
+        },
+        {
+          "name": "Sports Academy",
+          "href": "/beyond-classroom/sports-infrastructure"
         }
       ]
     },
@@ -104,7 +110,7 @@
         },
         {
           "name": "Sports Infrastructure",
-          "href": "/infrastructure#sports"
+          "href": "/beyond-classroom/sports-infrastructure"
         },
         {
           "name": "HMG Centre for Sports Excellence",
