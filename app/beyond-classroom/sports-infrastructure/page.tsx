@@ -67,10 +67,11 @@ export default function SportsInfrastructurePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-black text-primary mb-6 uppercase tracking-tight">Facilities Built for Champions</h2>
+              <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mb-6">
+                At Doon International, we believe that sports are as vital as academics in shaping confident, disciplined individuals. Our sprawling sports complex is one of the largest in the region, designed to support multiple disciplines simultaneously.
+              </p>
               <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
-                Physical education is a fundamental pillar of the DISJ curriculum. Our state-of-the-art 
-                sports infrastructure provides students with the perfect environment to discover their 
-                athletic potential, develop teamwork, and build physical and mental resilience.
+                Our campus boasts a wide range of world-class facilities including a swimming pool, horse riding arena, lawn tennis courts, table tennis halls, football grounds, cricket pitches, skating rinks, and basketball courts. Every child is encouraged to participate, discover their strengths, and develop teamwork and resilience through structured coaching and practice.
               </p>
             </motion.div>
 

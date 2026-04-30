@@ -49,7 +49,7 @@ export default function Gallery() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg md:text-xl mb-12 text-white/90 max-w-3xl mx-auto leading-relaxed"
             >
-              Experience the vibrant life at Doon International School through our comprehensive gallery showcasing academics, facilities, and extracurricular activities.
+              Parents and visitors can explore our vibrant campus through a curated gallery of high-resolution images. From sports arenas to creative studios, science labs to boarding facilities, the gallery offers a glimpse into the world-class infrastructure that supports every child’s journey at Doon International.
             </motion.p>
           </div>
         </div>

@@ -40,10 +40,7 @@ export default function MessFacilityPage() {
             >
               <h2 className="text-3xl font-black text-primary mb-6 uppercase tracking-tight">Healthy Fuel for Busy Minds</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                The DISJ Mess Facility is more than just a place to eat; it's a space where 
-                students learn the value of nutrition and healthy eating habits. Our 
-                expert chefs and nutritionists collaborate to create a menu that is 
-                both delicious and balanced.
+                Students enjoy hygienic, tasty, and nutritious meals prepared in our high-quality mess. The DISJ Mess Facility is more than just a place to eat; it's a space where students learn the value of nutrition and healthy eating habits. Our expert chefs and nutritionists collaborate to create a menu that is both delicious and balanced.
               </p>
             </motion.div>
 

@@ -38,15 +38,35 @@ export default function About() {
                 that prepares students for global success. We are recognized as one of the 
                 leading institutions in Jabalpur, Madhya Pradesh.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
                 Our curriculum is designed to balance intellectual rigour with emotional 
                 growth, nurturing children who are not just intelligent but kind, creative, 
                 and self-aware.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                <strong>School Culture & Ethos:</strong> We believe that education is not just about academics—it is about nurturing a safe, happy, and inclusive environment where every child feels valued. Our culture emphasizes respect, discipline, and empathy, ensuring that students grow into responsible citizens with strong moral values.
               </p>
             </section>
 
             <MissionVisionSection />
             <CoreValuesSection />
+
+            {/* Our Pillars of Excellence */}
+            <section className="bg-white p-8 md:p-10 rounded-[2rem] border border-gray-100 shadow-xl space-y-8">
+              <div>
+                <h3 className="text-2xl font-black text-primary mb-4">Expert Teachers & Associations</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Our faculty comprises highly qualified educators who bring both expertise and compassion into the classroom. In addition, we collaborate with renowned educational associations to enrich our curriculum. This ensures that students benefit from structured learning pathways, innovative teaching practices, and exposure to global standards. Parents can trust that their children are guided by mentors who care deeply about their growth.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-black text-primary mb-4">Best Practices as Culture</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  At Doon International, best practices are not just policies—they are part of our culture. We emphasize inclusivity, parental engagement, transparent communication, and holistic development. Every initiative is designed to ensure fairness, clarity, and continuous improvement. Together, we create a school environment where students thrive academically, socially, and emotionally.
+                </p>
+              </div>
+            </section>
 
             {/* Facilities Summary */}
             <section id="facilities">

@@ -5,7 +5,7 @@ import PageHero from '@/components/layout/PageHero';
 import PageContainer from '@/components/layout/PageContainer';
 import SubPageLayout from '@/components/layout/SubPageLayout';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, LineChart } from 'lucide-react';
 
 const sidebarItems = [
   { name: "Academics Overview", href: "/academics" },
@@ -121,6 +121,23 @@ export default function CurriculumPage() {
               <button className="bg-primary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shrink-0">
                 View Evaluation Policy
               </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mt-12 bg-white rounded-[2rem] border border-gray-100 p-10 shadow-lg flex flex-col md:flex-row items-center gap-8"
+            >
+              <div className="shrink-0 w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">
+                <LineChart className="w-10 h-10" />
+              </div>
+              <div>
+                <h3 className="text-2xl font-black text-primary mb-3">Individual Analysis & Tracking</h3>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Every child is unique, and we recognize that individuality through our continuous assessment system. With personalized growth monitoring, teachers track academic progress, social development, and emotional well-being. Parents receive regular updates, ensuring transparency and active involvement in their child’s journey. This system allows us to identify strengths and areas of improvement early, enabling timely interventions.
+                </p>
+              </div>
             </motion.div>
           </div>
         </SubPageLayout>

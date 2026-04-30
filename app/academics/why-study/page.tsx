@@ -5,7 +5,7 @@ import PageHero from '@/components/layout/PageHero';
 import PageContainer from '@/components/layout/PageContainer';
 import SubPageLayout from '@/components/layout/SubPageLayout';
 import { motion } from 'framer-motion';
-import { CheckCircle2, GraduationCap, Globe, Users } from 'lucide-react';
+import { CheckCircle2, GraduationCap, Globe, Users, Compass, Target } from 'lucide-react';
 
 const sidebarItems = [
   { name: "Academics Overview", href: "/academics" },
@@ -35,6 +35,16 @@ const reasons = [
     title: "Values-Based Education",
     description: "We instill core Indian values and ethics in our students, helping them grow into responsible and empathetic citizens.",
     icon: <CheckCircle2 className="w-8 h-8 text-primary" />
+  },
+  {
+    title: "Experiential Learning Activities",
+    description: "Learning extends beyond textbooks with STEM projects, Vedic Maths, spiritual classes, and personality development workshops.",
+    icon: <Compass className="w-8 h-8 text-primary" />
+  },
+  {
+    title: "Student Development Programs",
+    description: "Leadership training, debate clubs, public speaking, and community service groom well-rounded individuals ready for tomorrow.",
+    icon: <Target className="w-8 h-8 text-primary" />
   }
 ];
 

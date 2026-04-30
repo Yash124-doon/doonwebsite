@@ -45,17 +45,12 @@ export default function MissionVisionPage() {
                     <Eye className="w-8 h-8" />
                   </div>
                   <h2 className="text-4xl font-black text-primary mb-6 uppercase tracking-tight">Our Vision</h2>
-                  <p className="text-xl text-gray-600 leading-relaxed font-medium">
-                    To nurture confident global leaders with compassion and innovation. We envision graduates 
-                    who excel academically and uphold ethical values.
+                  <p className="text-lg text-primary leading-relaxed font-bold italic mb-4">
+                    "Rooted in Values, Ready for the World"
                   </p>
-                  <div className="mt-6 space-y-4">
-                    <p className="text-gray-600 text-lg">
-                      Through comprehensive arts, sciences, and experiential learning, we develop 
-                      well-rounded individuals. Our students become ambassadors of progress, 
-                      honoring tradition while embracing the future.
-                    </p>
-                  </div>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    To be the most trusted and transformative school in the region, blending cultural roots with global growth. We envision a future where every child from Doon International School is confident, disciplined, and future ready—equipped with socio emotional intelligence, academic excellence, and exposure to world class sports and fine arts, enabling them to thrive as leaders in society and on the global stage.
+                  </p>
                 </div>
                 <div className="md:w-1/2">
                   <div className="rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
@@ -82,16 +77,9 @@ export default function MissionVisionPage() {
                     <Target className="w-8 h-8" />
                   </div>
                   <h2 className="text-4xl font-black text-primary mb-6 uppercase tracking-tight">Our Mission</h2>
-                  <p className="text-xl text-gray-600 leading-relaxed font-medium">
-                    At Doon International School, we strive for academic excellence and holistic development. 
-                    We provide world-class education that builds character, creativity, and leadership.
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    Our mission is to provide holistic education that nurtures values, intellect, and skills. Through Ramcharitmanas and Bhagavad Gita classes, spiritual sessions, and International Relations/GK programs, we instill moral grounding and diplomatic thinking. With public speaking, foreign language learning, Vedic Maths, robotics, experiential learning, and exposure to national and international competitions, we prepare students for modern competency based education. Our unmatched boarding house, nutritionist curated meals, and exclusive sports facilities—including shooting, horse riding, athletics, and skating—ensure discipline, collaboration, and resilience. These areas together develop a well rounded personality that is focused, disciplined, emotionally strong, humble, and ready to crack competitions and face all challenges of life. We are committed to transparent communication, continuous assessment, and parent partnership, creating an environment where every child grows into a responsible, confident, and globally competitive citizen.
                   </p>
-                  <div className="mt-6 space-y-4">
-                    <p className="text-gray-600 text-lg">
-                      Our inclusive programs blend rigorous academics with sports and arts. 
-                      We prepare students to become ethical global citizens who contribute positively to society.
-                    </p>
-                  </div>
                 </div>
                 <div className="md:w-1/2">
                   <div className="rounded-3xl overflow-hidden shadow-2xl -rotate-2 hover:rotate-0 transition-transform duration-500">

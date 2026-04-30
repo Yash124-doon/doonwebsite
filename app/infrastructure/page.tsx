@@ -6,7 +6,7 @@ import PageContainer from '@/components/layout/PageContainer';
 import SubPageLayout from '@/components/layout/SubPageLayout';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Map, Library, Microscope, Tablet, Monitor, Music, Activity, Utensils, Trophy } from 'lucide-react';
+import { Map, Library, Microscope, Tablet, Monitor, Music, Activity, Utensils, Trophy, Cpu, Mic2 } from 'lucide-react';
 
 const sidebarItems = [
   { name: "Infrastructure Overview", href: "/infrastructure" },
@@ -36,14 +36,20 @@ const facilities = [
     href: "/infrastructure/library"
   },
   {
-    title: "Science Park",
-    description: "An innovative outdoor space featuring interactive scientific models and exhibits.",
+    title: "Science Laboratories",
+    description: "Fully equipped laboratories for Physics, Chemistry, and Biology, designed to foster curiosity and hands-on learning under expert supervision.",
     icon: <Microscope className="w-8 h-8 text-primary" />,
+    href: "/infrastructure/science-labs"
+  },
+  {
+    title: "STEM & Robotics Lab",
+    description: "Advanced lab enhanced with Virtual Reality (VR) facilities to nurture creativity, problem-solving, and innovation.",
+    icon: <Cpu className="w-8 h-8 text-primary" />,
     href: "/infrastructure/science-park"
   },
   {
-    title: "Digital Classrooms",
-    description: "Every classroom is equipped with smart boards and high-definition projection systems.",
+    title: "Smart Classrooms",
+    description: "Every classroom is equipped with smart LED panels and touch-screen interactive boards making learning engaging and future-ready.",
     icon: <Tablet className="w-8 h-8 text-primary" />,
     href: "/infrastructure/smart-class"
   },
@@ -54,10 +60,16 @@ const facilities = [
     href: "/infrastructure/computer-lab"
   },
   {
-    title: "Creative Studios",
-    description: "Dedicated spaces for music, dance, visual arts, and craft activities.",
+    title: "Creative Zones",
+    description: "Dedicated spaces for pottery, modern dance, music, and art & craft where creativity flourishes.",
     icon: <Music className="w-8 h-8 text-primary" />,
     href: "/infrastructure/activity-rooms"
+  },
+  {
+    title: "State-of-the-Art Auditorium",
+    description: "The cultural heartbeat of the school, equipped with modern sound and lighting systems for plays, debates, and performances.",
+    icon: <Mic2 className="w-8 h-8 text-primary" />,
+    href: "/infrastructure" 
   }
 ];
 

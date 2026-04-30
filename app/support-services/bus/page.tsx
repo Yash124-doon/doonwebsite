@@ -40,9 +40,7 @@ export default function BusFacilityPage() {
             >
               <h2 className="text-3xl font-black text-primary mb-6 uppercase tracking-tight">Safe Journeys, Every Day</h2>
               <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                The school provides a safe and well-managed transport network that covers 
-                a vast area of Jabalpur. Our fleet of modern buses is maintained to the 
-                highest standards of safety and comfort.
+                Safety and reliability are paramount in our transport system. Our fleet of buses is equipped with GPS tracking, trained drivers, and attendants to ensure secure travel. Parents can rest assured that their children commute safely and comfortably to and from school.
               </p>
             </motion.div>
 

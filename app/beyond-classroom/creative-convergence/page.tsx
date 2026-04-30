@@ -67,10 +67,13 @@ export default function CreativeConvergencePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-black text-primary mb-6 uppercase tracking-tight">The Artistic Spirit</h2>
-              <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+              <p className="text-lg text-gray-600 leading-relaxed max-w-3xl mb-6">
                 At DISJ, we believe that every child is an artist. Our 'Creative Convergence' 
                 department provides the resources, mentorship, and platform for students to 
                 explore their creative potential across various mediums.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed max-w-3xl">
+                Creativity flourishes in our dedicated spaces for pottery, modern dance, music, and art & craft. These zones provide students with opportunities to express themselves, develop fine motor skills, and explore artistic passions. Whether sculpting clay, performing on stage, or painting a masterpiece, every child finds a platform to shine.
               </p>
             </motion.div>
 

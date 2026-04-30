@@ -323,6 +323,18 @@ export default function Home(): JSX.Element {
       {/* //Our Associations Page Here */}
       <OurAssociations />
 
+      <section className="py-16 px-4 bg-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-black text-[#002B6B] mb-6">A Culture of Excellence and Joy</h2>
+          <p className="text-lg text-gray-600 leading-relaxed mb-4">
+            At Doon International School, learning is not confined to classrooms. Our students participate in regular field visits, industry tours, and nature excursions that broaden their horizons.
+          </p>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            These experiences connect classroom knowledge with real-world applications, fostering curiosity and critical thinking while instilling teamwork, leadership, and respect for the environment.
+          </p>
+        </div>
+      </section>
+
       <DiscoverDoon cards={discoverData.cards as any[]} />
 
       {/* Academic Life at Doon - Commented out */}

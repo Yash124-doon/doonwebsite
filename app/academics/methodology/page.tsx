@@ -5,7 +5,7 @@ import PageHero from '@/components/layout/PageHero';
 import PageContainer from '@/components/layout/PageContainer';
 import SubPageLayout from '@/components/layout/SubPageLayout';
 import { motion } from 'framer-motion';
-import { BookOpen, Lightbulb, Puzzle, Rocket } from 'lucide-react';
+import { BookOpen, Lightbulb, Puzzle, Rocket, GraduationCap, Shapes } from 'lucide-react';
 
 const sidebarItems = [
   { name: "Academics Overview", href: "/academics" },
@@ -39,6 +39,18 @@ const pillars = [
     description: "With an optimal teacher-student ratio, we identify the unique learning styles and needs of every child, providing tailored support.",
     icon: <BookOpen className="w-10 h-10" />,
     color: "bg-orange-500"
+  },
+  {
+    title: "Teaching Pedagogy",
+    description: "Blending traditional wisdom with modern methodologies. Every lesson connects theory with practice, preparing students for academic success and life beyond school.",
+    icon: <GraduationCap className="w-10 h-10" />,
+    color: "bg-teal-500"
+  },
+  {
+    title: "Pre-Primary & Early Years Pedagogy",
+    description: "Our youngest learners are introduced to education through play-based and activity-driven methods, focusing on curiosity, creativity, and foundational skills.",
+    icon: <Shapes className="w-10 h-10" />,
+    color: "bg-pink-500"
   }
 ];
 

@@ -22,7 +22,7 @@ app.use(
 
 // --------------- CORS Configuration ---------------
 const allowedOrigins = [
-  process.env.FRONTEND_URL || 'http://localhost:3000',
+  'http://localhost:3000',
   'http://localhost:3001',
   'http://localhost:3002',
   'https://dooninternationaljabalpur.com',
@@ -36,7 +36,11 @@ app.use(
     origin: function (origin, callback) {
       // Allow requests with no origin (Postman, curl, server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin)) {
+      // Allow localhost and any subdomain of dooninternationaljabalpur.com
+      const isAllowed =
+        allowedOrigins.includes(origin) ||
+        /^https?:\/\/(www\.)?dooninternationaljabalpur\.com$/.test(origin);
+      if (isAllowed) {
         return callback(null, true);
       }
       return callback(new Error('Not allowed by CORS'));

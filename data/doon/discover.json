@@ -4,15 +4,15 @@
     {
       "id": "academics",
       "title": "Academics",
-      "subtitle": "World-class curriculum with CBSE framework, STEM programs, and holistic learning approaches.",
+      "subtitle": "Blending traditional wisdom with modern methodologies. Every lesson connects theory with practice, preparing students for academic success and life beyond school.",
       "image": "/images/academics/stem-program.avif",
       "icon": "book",
       "link": "/academics"
     },
     {
       "id": "sports",
-      "title": "Sports",
-      "subtitle": "Comprehensive sports facilities promoting physical excellence and teamwork among students.",
+      "title": "Holistic Growth",
+      "subtitle": "Focusing on overall growth—intellectual, physical, and emotional. We offer structured programs in leadership, debate, and community service.",
       "image": "/images/sports/horses.webp",
       "icon": "sports",
       "link": "/sports"
@@ -20,7 +20,7 @@
     {
       "id": "infrastructure",
       "title": "Infrastructure",
-      "subtitle": "Modern classrooms, advanced labs, and innovative learning spaces designed for excellence.",
+      "subtitle": "A safe, happy, and inclusive environment. Our modern facilities and boarding house provide a nurturing 'second home' for every child.",
       "image": "/assets/main-entrance.webp",
       "icon": "building",
       "link": "/infrastructure"

@@ -41,6 +41,15 @@ export default async function DiscoverDoon() {
         secondaryCta={discoverData.hero.secondaryCta}
       />
 
+      <section className="bg-white py-16 px-4 border-b border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-black text-[#002B6B] mb-6">A Culture of Excellence and Joy</h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            Discover the foundational pillars that make Doon International School, Jabalpur, a beacon of holistic growth. From our deep-rooted ethos to our modern pedagogy, we are committed to nurturing every aspect of a child's development.
+          </p>
+        </div>
+      </section>
+
       <div className="section-spacing">
         <MainHeading title={discoverData.mainHeading} />
 

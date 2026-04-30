@@ -39,11 +39,14 @@ export default function BoardingHousePage() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl font-black text-primary mb-6 uppercase tracking-tight">Residential Life</h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-lg text-gray-600 leading-relaxed mb-4">
                 The Boarding House at Doon International School provides a cohesive community 
                 environment where students from across the country learn the values of 
                 independence, teamwork, and cultural diversity. Our hostel facilities are 
                 designed to offer modern comfort while maintaining a disciplined and academic atmosphere.
+              </p>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                <strong>A Second Home:</strong> For families opting for residential facilities, our Boarding House offers a nurturing environment that feels like a second home. With structured routines, mentorship programs, and personalized care, boarders enjoy a balance of academics, co-curricular activities, and leisure. Safety and well-being are our top priorities, and every child is guided to develop independence, responsibility, and camaraderie with peers.
               </p>
             </motion.div>
 

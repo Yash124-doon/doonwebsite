@@ -58,19 +58,23 @@
     },
     {
       "name": "DISCOVER DOON",
-      "href": "/infrastructure",
+      "href": "/discover-doon",
       "dropdown": [
         {
-          "name": "Blog",
-          "href": "/blog"
+          "name": "Discover Doon Overview",
+          "href": "/discover-doon"
+        },
+        {
+          "name": "Infrastructure",
+          "href": "/infrastructure"
         },
         {
           "name": "Gallery",
           "href": "/gallery"
         },
         {
-          "name": "Infrastructure",
-          "href": "/infrastructure"
+          "name": "Blog",
+          "href": "/blog"
         }
       ]
     },
